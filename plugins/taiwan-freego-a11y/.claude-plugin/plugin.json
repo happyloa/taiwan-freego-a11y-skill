@@ -1,0 +1,10 @@
+{
+  "name": "taiwan-freego-a11y",
+  "description": "Apply Taiwan 網站無障礙規範 2.0 / WCAG 2.0 AA accessibility practices (Freego-checked) when writing or reviewing web UI",
+  "version": "1.0.0",
+  "author": {
+    "name": "happyloa"
+  },
+  "license": "MIT",
+  "keywords": ["accessibility", "a11y", "wcag", "freego", "taiwan", "frontend"]
+}

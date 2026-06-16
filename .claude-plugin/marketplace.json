@@ -1,0 +1,14 @@
+{
+  "name": "happyloa-skills",
+  "owner": {
+    "name": "happyloa"
+  },
+  "description": "Reusable Claude Code skills",
+  "plugins": [
+    {
+      "name": "taiwan-freego-a11y",
+      "source": "./plugins/taiwan-freego-a11y",
+      "description": "Apply Taiwan WCAG 2.0 AA (Freego) accessibility practices to web UI work"
+    }
+  ]
+}
