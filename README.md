@@ -6,6 +6,7 @@
 
 - **相對字型大小**（rem / em / % / 具名值，禁用 px）— Freego `CS2140401C`
 - **表單控制項標籤**（`<label for>` + `id`，或 `aria-label`）— Freego `HM1130104C`
+- **`<fieldset>` 第一個子元素須為 `<legend>`**（`aria-label` 不能取代）— Freego `HM1130103C`
 - **表格標頭 `scope`** + `<caption>`（空角格使用 `<td>`）— Freego `HM1130101C`
 - **AA 色彩對比度 ≥ 4.5:1**（例如：避免以 Tailwind `gray-400` 顯示輔助文字）
 - ARIA 模式：頁面 `<h1>`、錯誤訊息用 `role="alert"`、裝飾性元素用 `aria-hidden`、`aria-pressed` / `aria-expanded`、離屏選單用 `inert`、`lang` 屬性與可縮放的 viewport
@@ -84,6 +85,7 @@ It enforces, by default:
 
 - **Relative `font-size`** (rem/em/%/named, never px) — Freego `CS2140401C`
 - **Labelled form controls** (`<label for>`+`id`, or `aria-label`) — Freego `HM1130104C`
+- **`<fieldset>` first child must be `<legend>`** (`aria-label` alone doesn't satisfy it) — Freego `HM1130103C`
 - **Table header `scope`** + `<caption>` (empty corner = `<td>`) — Freego `HM1130101C`
 - **AA colour contrast ≥ 4.5:1** (e.g. avoid Tailwind `gray-400` for muted text)
 - ARIA patterns: page `<h1>`, `role="alert"` errors, `aria-hidden` decor, `aria-pressed` /

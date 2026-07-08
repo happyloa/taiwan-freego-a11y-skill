@@ -43,7 +43,32 @@ with **no visual change** but it passes.
 <button aria-label="關閉選單">✕</button>
 ```
 
-### 3. Data tables need header scope — Freego `HM1130101C`
+### 3. `<fieldset>` needs a `<legend>` as its first child — Freego `HM1130103C`
+Any `<fieldset>` (a related-controls group — radio/checkbox groups, but also a compact
+button-row toolbar) must have a `<legend>` as its literal **first child element**.
+`aria-label` on the `<fieldset>` is ARIA-equivalent for the accessible name, but does
+**not** satisfy this rule — Freego checks the DOM structure directly, not the computed
+accessible name. If a visible legend would break a compact layout, keep it but hide it
+visually with `sr-only`; never omit it.
+
+```html
+<!-- ❌ aria-label alone — fails HM1130103C even though it's accessible to AT -->
+<fieldset aria-label="調整文字大小">…</fieldset>
+
+<!-- ✅ -->
+<fieldset aria-label="調整文字大小">
+  <legend class="sr-only">調整文字大小</legend>
+  …
+</fieldset>
+```
+
+> **Common trap**: converting a `<div role="group">` to a native `<fieldset>` (e.g. to
+> satisfy a linter's "prefer native element over ARIA role" rule, such as SonarQube
+> `typescript:S6819`) silently drops this requirement — the linter doesn't check for a
+> legend, only Freego does. Whenever `role="group"` becomes `<fieldset>`, add the legend
+> in the same change.
+
+### 4. Data tables need header scope — Freego `HM1130101C`
 - `<th scope="col">` for column headers, `<th scope="row">` for row headers.
 - An empty corner cell must be `<td>`, **not** a scope-less `<th>`.
 - Add a `<caption>` (a visually-hidden one is fine) describing the table.
@@ -59,14 +84,14 @@ with **no visual change** but it passes.
 </table>
 ```
 
-### 4. Colour contrast ≥ 4.5:1 (WCAG AA, normal text)
+### 5. Colour contrast ≥ 4.5:1 (WCAG AA, normal text)
 Light-grey muted text on white commonly fails — verify it.
 
 - Tailwind: `text-gray-400` (#9ca3af ≈ 2.5:1) **fails**; use `text-gray-500` (#6b7280 ≈ 4.8:1).
 - Dark mode: pair with `dark:text-slate-400` (not `slate-500`).
 - Colour-coded label text: use the `-700` shade, not `-600`, and add a dark variant.
 
-### 5. ARIA / structural patterns (apply by default)
+### 6. ARIA / structural patterns (apply by default)
 - One `<h1>` per page (a visually-hidden `sr-only` one is fine).
 - Form error messages: `role="alert" aria-live="assertive"`; link the field via `aria-describedby`.
 - Decorative icons/emoji: `aria-hidden="true"`.
@@ -82,3 +107,15 @@ Freego is a desktop crawler. It **cannot reliably**:
 So for login-gated pages and hidden forms, **audit the source directly** against this checklist
 rather than trusting the scan alone. Re-scan after fixes, and verify a build
 (`tsc` / your bundler) before committing.
+
+### A flagged page may not be your app at all
+If a single finding looks structurally different from the rest (e.g. "root element missing
+`lang`" on only one URL out of many, or a snippet that doesn't match your actual
+`index.html`), don't assume it's a bug in your app before checking what was actually served.
+A bare URL missing a trailing slash can hit a shared/outer reverse proxy in front of your
+container (a colleague's own nginx, a CDN, a load balancer) and get back that proxy's own
+default error/redirect page instead of your SPA — which naturally has no `lang`, no your CSP
+headers, etc. `curl -i` the exact flagged URL (with and without the trailing slash) and
+compare the response body/headers against what your own server actually returns before
+"fixing" code that isn't the real cause; the real fix may belong to whoever owns that outer
+proxy, not this repo.
