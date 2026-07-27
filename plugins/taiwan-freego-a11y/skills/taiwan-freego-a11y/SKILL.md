@@ -91,8 +91,46 @@ Light-grey muted text on white commonly fails — verify it.
 - Dark mode: pair with `dark:text-slate-400` (not `slate-500`).
 - Colour-coded label text: use the `-700` shade, not `-600`, and add a dark variant.
 
-### 6. ARIA / structural patterns (apply by default)
-- One `<h1>` per page (a visually-hidden `sr-only` one is fine).
+### 6. Heading hierarchy must match the visual title structure — WCAG 2.0 AA (1.3.1 / 2.4.6)
+Freego's heading-structure view (標題檢視) lists the page's `<h1>`–`<h6>` outline; a user reporting
+that「標題沒有按照層級」means that outline is broken. Three failure modes, most common first:
+
+- **A visual title not marked up as a heading** (the usual culprit). A section / card / list-item
+  title rendered with prominent styling — `font-bold`, `font-semibold`, `text-lg`, `text-xl` — inside
+  a `<p>`, `<div>`, or `<span>` *looks* like a heading but is **absent from the outline**, so screen-reader
+  users can't jump to it. Promote it to the `<h1>`–`<h6>` level that matches its nesting depth.
+- **A skipped level.** Never jump a level going down — `<h1>` then `<h3>` with no `<h2>` between, or a
+  card title hard-coded as `<h3>` directly under the `<h1>` page title. Each step down is +1 at most.
+- **Missing or duplicate `<h1>`.** Exactly one `<h1>` per page (a visually-hidden `sr-only` one is fine).
+
+```html
+<!-- ❌ a card/section title that reads as a heading but isn't one → missing from the outline -->
+<p class="text-lg font-semibold">評估風險</p>
+<!-- ✅ marked at the level that fits its place in the outline (h1 → h2 → h3) -->
+<h3 class="text-lg font-semibold">評估風險</h3>
+```
+
+> **The visual stays identical.** Tailwind's Preflight resets `<h1>`–`<h6>` to `font-size: inherit;
+> font-weight: inherit; margin: 0`, so changing `<p>`→`<h3>` while keeping the same utility classes
+> renders pixel-for-pixel the same — you gain the semantics for free. (Without Preflight, add the
+> matching `text-*`/`font-*` classes so the heading doesn't jump to the browser default size.)
+
+**Don't over-promote** — these are *not* missing headings, and marking them up is wrong:
+- Body-weight text (`font-medium` or lighter, `text-sm`/`text-xs`) that isn't visually prominent —
+  it's usually a field label or helper text, not a title.
+- Items already inside a semantic `<ul>`/`<li>` — the list conveys the grouping.
+- A one-field prompt sitting above a single input → that's a `<label for>`, not a heading.
+
+**Accordion / disclosure titles**: put the heading *outside* the trigger, never a heading inside a
+button — `<h2><button aria-expanded aria-controls="p1">部會名稱</button></h2>` (WAI-ARIA APG pattern).
+
+> **Common trap — one fix, many rows.** A title inside a `.map()` is one JSX expression, so a single
+> `<p>`→`<h3>` covers every rendered row. But a title coming from a **shared component** (a `<Card>`
+> wrapper, a `RiskItemHeader`) renders on *many* pages — fix it once there, then check it doesn't
+> create a skipped level on any page that consumes it (you may need to promote that page's own title
+> in tandem so the shared one sits exactly one level below it).
+
+### 7. ARIA / structural patterns (apply by default)
 - Form error messages: `role="alert" aria-live="assertive"`; link the field via `aria-describedby`.
 - Decorative icons/emoji: `aria-hidden="true"`.
 - Toggle buttons: `aria-pressed`. Disclosure/accordion: `aria-expanded` + `aria-controls`.

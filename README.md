@@ -9,7 +9,8 @@
 - **`<fieldset>` 第一個子元素須為 `<legend>`**（`aria-label` 不能取代）— Freego `HM1130103C`
 - **表格標頭 `scope`** + `<caption>`（空角格使用 `<td>`）— Freego `HM1130101C`
 - **AA 色彩對比度 ≥ 4.5:1**（例如：避免以 Tailwind `gray-400` 顯示輔助文字）
-- ARIA 模式：頁面 `<h1>`、錯誤訊息用 `role="alert"`、裝飾性元素用 `aria-hidden`、`aria-pressed` / `aria-expanded`、離屏選單用 `inert`、`lang` 屬性與可縮放的 viewport
+- **標題層級**（唯一 `<h1>`、不跳級、視覺上的標題須標記為對應層級的 `<h1>`–`<h6>`）— WCAG 2.0 AA
+- ARIA 模式：錯誤訊息用 `role="alert"`、裝飾性元素用 `aria-hidden`、`aria-pressed` / `aria-expanded`、離屏選單用 `inert`、`lang` 屬性與可縮放的 viewport
 
 完整規則詳見：[`plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md`](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md)。
 
@@ -88,7 +89,8 @@ It enforces, by default:
 - **`<fieldset>` first child must be `<legend>`** (`aria-label` alone doesn't satisfy it) — Freego `HM1130103C`
 - **Table header `scope`** + `<caption>` (empty corner = `<td>`) — Freego `HM1130101C`
 - **AA colour contrast ≥ 4.5:1** (e.g. avoid Tailwind `gray-400` for muted text)
-- ARIA patterns: page `<h1>`, `role="alert"` errors, `aria-hidden` decor, `aria-pressed` /
+- **Heading hierarchy** (one `<h1>`, no skipped levels, visual titles marked up as real `<h1>`–`<h6>`) — WCAG 2.0 AA
+- ARIA patterns: `role="alert"` errors, `aria-hidden` decor, `aria-pressed` /
   `aria-expanded`, `inert` off-canvas, `lang` + zoomable viewport
 
 Full rules: [`plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md`](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md).
