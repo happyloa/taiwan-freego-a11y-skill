@@ -1,0 +1,2583 @@
+{
+  "schema_version": 1,
+  "standard": "Taiwan 115.11",
+  "wcag": "2.2",
+  "published_on": "2026-05-29",
+  "effective_on": "2026-11-30",
+  "verified_on": "2026-10-08",
+  "scope": "Complete published 115.11 Appendix 1 index; code coverage is not a claim that a website or Freego run passed.",
+  "criteria": [
+    {
+      "id": "1.1.1",
+      "title": "非文字內容",
+      "level": "A",
+      "status": "active",
+      "check": "Review images, image maps, SVG/canvas/charts, objects, symbols, sensory content, and CAPTCHA for meaningful equivalents; decorative content must be ignorable."
+    },
+    {
+      "id": "1.2.1",
+      "title": "純音訊與純視訊(預錄)",
+      "level": "A",
+      "status": "active",
+      "check": "For prerecorded audio-only/video-only, verify equivalent transcripts, descriptions, or a qualifying alternative audio track; assess the explicitly labelled text-alternative exception."
+    },
+    {
+      "id": "1.2.2",
+      "title": "字幕(預錄)",
+      "level": "A",
+      "status": "active",
+      "check": "Watch prerecorded synchronized media and verify accurate, synchronized captions including relevant speech and sounds; assess the labelled text-alternative exception."
+    },
+    {
+      "id": "1.2.3",
+      "title": "音訊描述或替代媒體",
+      "level": "A",
+      "status": "active",
+      "check": "Verify prerecorded synchronized media has audio description or a complete time-based media alternative, unless the specified text-alternative exception applies."
+    },
+    {
+      "id": "1.2.4",
+      "title": "字幕(現場直播)",
+      "level": "AA",
+      "status": "active",
+      "check": "Verify live synchronized media includes usable captions for the audio content."
+    },
+    {
+      "id": "1.2.5",
+      "title": "音訊描述(預錄)",
+      "level": "AA",
+      "status": "active",
+      "check": "Verify audio description of important visual information in prerecorded synchronized video; a transcript alone is insufficient at AA."
+    },
+    {
+      "id": "1.2.6",
+      "title": "手語(預錄)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify prerecorded synchronized audio has sign-language interpretation."
+    },
+    {
+      "id": "1.2.7",
+      "title": "延伸音訊描述",
+      "level": "AAA",
+      "status": "active",
+      "check": "Provide extended audio descriptions when pauses cannot accommodate necessary visual information."
+    },
+    {
+      "id": "1.2.8",
+      "title": "替代媒體(預錄)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify complete time-based alternatives for all prerecorded synchronized media and prerecorded video-only."
+    },
+    {
+      "id": "1.2.9",
+      "title": "純音訊(現場直播)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify an equivalent alternative for live audio-only, such as live text/captions."
+    },
+    {
+      "id": "1.3.1",
+      "title": "資訊與關連性",
+      "level": "A",
+      "status": "active",
+      "check": "Inspect real headings, lists, emphasis, data-table associations, form labels/groups, and options; ensure structure and relationships survive nonvisual reading."
+    },
+    {
+      "id": "1.3.2",
+      "title": "有意義的序列",
+      "level": "A",
+      "status": "active",
+      "check": "Compare visual, DOM, screen-reader, and linearized reading sequences; inspect mixed text direction and layout tables."
+    },
+    {
+      "id": "1.3.3",
+      "title": "知覺特徵",
+      "level": "A",
+      "status": "active",
+      "check": "Ensure instructions identify actions using text rather than only shape, color, position, orientation, size, or sound."
+    },
+    {
+      "id": "1.3.4",
+      "title": "螢幕方向",
+      "level": "AA",
+      "status": "active",
+      "check": "Operate in portrait and landscape; accept a lock only when that orientation is essential."
+    },
+    {
+      "id": "1.3.5",
+      "title": "識別輸入目的",
+      "level": "AA",
+      "status": "active",
+      "check": "Check correct autocomplete/input-purpose tokens for fields collecting recognized user information."
+    },
+    {
+      "id": "1.3.6",
+      "title": "識別目的",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify regions, icons, and component purposes can be determined programmatically using supported semantics."
+    },
+    {
+      "id": "1.4.1",
+      "title": "色彩使用",
+      "level": "A",
+      "status": "active",
+      "check": "Inspect errors, required fields, links, charts, selection, and status without color; retain an equivalent text/shape/pattern cue."
+    },
+    {
+      "id": "1.4.2",
+      "title": "音訊控制",
+      "level": "A",
+      "status": "active",
+      "check": "If automatic audio lasts more than 3 seconds, verify pause/stop or independent volume control."
+    },
+    {
+      "id": "1.4.3",
+      "title": "對比值(最小)",
+      "level": "AA",
+      "status": "active",
+      "check": "Measure actual normal-text contrast >=4.5:1 and large-text contrast >=3:1 in relevant states; assess logo/incidental/inactive exceptions."
+    },
+    {
+      "id": "1.4.4",
+      "title": "調整文字尺寸",
+      "level": "AA",
+      "status": "active",
+      "check": "Resize text to 200% without losing content/functions, including text in controls; apply the caption/image-text exceptions and relative-font C check."
+    },
+    {
+      "id": "1.4.5",
+      "title": "影像文字",
+      "level": "AA",
+      "status": "active",
+      "check": "Use real text instead of images of text unless customizable or essential (including logotypes)."
+    },
+    {
+      "id": "1.4.6",
+      "title": "對比值(增強)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Measure enhanced normal-text contrast >=7:1 and large-text contrast >=4.5:1, observing the stated exceptions."
+    },
+    {
+      "id": "1.4.7",
+      "title": "低或無背景音訊",
+      "level": "AAA",
+      "status": "active",
+      "check": "For applicable prerecorded speech audio, remove/disable background sound or keep it at least 20 dB below speech, except occasional short sounds."
+    },
+    {
+      "id": "1.4.8",
+      "title": "視覺呈現",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify selectable foreground/background; line lengths <=80 characters or 40 CJK; no full justification; line spacing >=1.5 and paragraph spacing >=1.5 times line spacing; 200% resizing without horizontal line scrolling."
+    },
+    {
+      "id": "1.4.9",
+      "title": "影像文字(無例外)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Allow images of text only when purely decorative or when the particular presentation is essential."
+    },
+    {
+      "id": "1.4.10",
+      "title": "流動排版",
+      "level": "AA",
+      "status": "active",
+      "check": "Test vertical content at 320 CSS px width or horizontal content at 256 CSS px height without lost information/functions or two-dimensional page scrolling; confine legitimate 2D exceptions locally."
+    },
+    {
+      "id": "1.4.11",
+      "title": "非文字對比",
+      "level": "AA",
+      "status": "active",
+      "check": "Measure >=3:1 contrast for necessary control/state and graphic information against adjacent colors; assess inactive/default-agent/essential exceptions."
+    },
+    {
+      "id": "1.4.12",
+      "title": "文字間距",
+      "level": "AA",
+      "status": "active",
+      "check": "Override line height to 1.5, paragraph spacing to 2em, letters to .12em (.14em Chinese), and words to .16em; retain content/functions and apply the Taiwan language notes."
+    },
+    {
+      "id": "1.4.13",
+      "title": "懸浮或焦點內容",
+      "level": "AA",
+      "status": "active",
+      "check": "Test added hover/focus content for dismissal without pointer/focus movement, pointer movement into it, and persistence; assess user-agent/essential exceptions."
+    },
+    {
+      "id": "2.1.1",
+      "title": "鍵盤",
+      "level": "A",
+      "status": "active",
+      "check": "Complete all functions by keyboard without specific keystroke timing, except functions inherently dependent on the path of movement."
+    },
+    {
+      "id": "2.1.2",
+      "title": "無鍵盤操作陷阱",
+      "level": "A",
+      "status": "active",
+      "check": "Enter and leave every component using the keyboard; disclose any nonstandard exit method."
+    },
+    {
+      "id": "2.1.3",
+      "title": "鍵盤(無例外)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Complete every function by keyboard with no path-dependent exception."
+    },
+    {
+      "id": "2.1.4",
+      "title": "快捷鍵",
+      "level": "A",
+      "status": "active",
+      "check": "For single-character shortcuts, verify disable/remap capability or activation only while the relevant component has focus."
+    },
+    {
+      "id": "2.2.1",
+      "title": "計時調整",
+      "level": "A",
+      "status": "active",
+      "check": "For content time limits, verify off/adjust/extend: adjustment >=10x default or >=20-second warning with at least 10 simple extensions; assess real-time/essential/>20-hour exceptions."
+    },
+    {
+      "id": "2.2.2",
+      "title": "暫停、停止和隱藏",
+      "level": "A",
+      "status": "active",
+      "check": "Provide pause/stop/hide for applicable automatic moving/blinking/scrolling lasting >5 seconds, and pause/stop/hide/update-frequency control for applicable auto-updates."
+    },
+    {
+      "id": "2.2.3",
+      "title": "無計時",
+      "level": "AAA",
+      "status": "active",
+      "check": "Remove nonessential time limits except noninteractive synchronized media and real-time events."
+    },
+    {
+      "id": "2.2.4",
+      "title": "中斷",
+      "level": "AAA",
+      "status": "active",
+      "check": "Let users postpone or suppress interruptions unless they involve an emergency."
+    },
+    {
+      "id": "2.2.5",
+      "title": "重新認證",
+      "level": "AAA",
+      "status": "active",
+      "check": "Expire and reauthenticate a session; preserve the activity and entered data."
+    },
+    {
+      "id": "2.2.6",
+      "title": "逾時",
+      "level": "AAA",
+      "status": "active",
+      "check": "Warn about inactivity timeouts causing data loss unless data is preserved for more than 20 hours without user action."
+    },
+    {
+      "id": "2.3.1",
+      "title": "閃爍三次或低於閾值",
+      "level": "A",
+      "status": "active",
+      "check": "Check no more than three flashes in one second or compliance with both general/red flash thresholds; use measurement when uncertain."
+    },
+    {
+      "id": "2.3.2",
+      "title": "閃爍三次",
+      "level": "AAA",
+      "status": "active",
+      "check": "Verify no content flashes more than three times in any one-second period."
+    },
+    {
+      "id": "2.3.3",
+      "title": "來自互動的動畫",
+      "level": "AAA",
+      "status": "active",
+      "check": "Disable interaction-triggered nonessential motion, including through prefers-reduced-motion where suitable."
+    },
+    {
+      "id": "2.4.1",
+      "title": "跳過區塊",
+      "level": "A",
+      "status": "active",
+      "check": "Use a working keyboard bypass for repeated blocks and meaningful landmarks/headings; test the skip-link destination and focus."
+    },
+    {
+      "id": "2.4.2",
+      "title": "網頁標題",
+      "level": "A",
+      "status": "active",
+      "check": "Review each page/SPA route title for its specific topic or purpose, not only non-emptiness."
+    },
+    {
+      "id": "2.4.3",
+      "title": "焦點順序",
+      "level": "A",
+      "status": "active",
+      "check": "Tab through content and complete processes; ensure focus order preserves meaning and operation."
+    },
+    {
+      "id": "2.4.4",
+      "title": "鏈結目的(脈絡)",
+      "level": "A",
+      "status": "active",
+      "check": "Determine each link purpose from its name and programmatically determinable context; inspect icon links and vague repeated labels."
+    },
+    {
+      "id": "2.4.5",
+      "title": "多種方式",
+      "level": "AA",
+      "status": "active",
+      "check": "Offer multiple ways to locate pages in a set, such as navigation plus search/site map; assess process/result-page exceptions."
+    },
+    {
+      "id": "2.4.6",
+      "title": "標題和標籤",
+      "level": "AA",
+      "status": "active",
+      "check": "Review headings and labels for descriptive topic/purpose, not merely their existence."
+    },
+    {
+      "id": "2.4.7",
+      "title": "焦點可視",
+      "level": "AA",
+      "status": "active",
+      "check": "Keep the keyboard focus indicator visible for every relevant interactive component."
+    },
+    {
+      "id": "2.4.8",
+      "title": "位置",
+      "level": "AAA",
+      "status": "active",
+      "check": "Expose the page location within its set/site, such as accessible breadcrumbs."
+    },
+    {
+      "id": "2.4.9",
+      "title": "鏈結目的(僅鏈結)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Determine each link purpose from link content alone, subject to the genuinely ambiguous-to-everyone exception."
+    },
+    {
+      "id": "2.4.10",
+      "title": "區段標題",
+      "level": "AAA",
+      "status": "active",
+      "check": "Organize content with descriptive section headings."
+    },
+    {
+      "id": "2.4.11",
+      "title": "焦點不遮蔽(最小)",
+      "level": "AA",
+      "status": "active",
+      "check": "Tab at zoom/small viewports with author-created sticky bars/overlays; the focused component must not be completely hidden."
+    },
+    {
+      "id": "2.4.12",
+      "title": "焦點不遮蔽(加強)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Tab with author-created overlays; no part of the focused component may be hidden."
+    },
+    {
+      "id": "2.4.13",
+      "title": "焦點外觀",
+      "level": "AAA",
+      "status": "active",
+      "check": "Measure focus-indicator area >= a 2 CSS px perimeter and focused/unfocused same-pixel contrast >=3:1, subject to the unmodifiable user-agent exceptions."
+    },
+    {
+      "id": "2.5.1",
+      "title": "指標手勢",
+      "level": "A",
+      "status": "active",
+      "check": "Provide single-pointer, non-path alternatives to multipoint/path gestures unless essential."
+    },
+    {
+      "id": "2.5.2",
+      "title": "指標取消",
+      "level": "A",
+      "status": "active",
+      "check": "Verify no down-event activation, or abort/undo/up-event reversal, unless down-event completion is essential."
+    },
+    {
+      "id": "2.5.3",
+      "title": "標籤名稱",
+      "level": "A",
+      "status": "active",
+      "check": "Ensure the accessible name includes the visible text label, preferably beginning with that text."
+    },
+    {
+      "id": "2.5.4",
+      "title": "動作啟動",
+      "level": "A",
+      "status": "active",
+      "check": "Provide controls equivalent to motion actuation and a way to disable motion response; assess supported-interface/essential exceptions."
+    },
+    {
+      "id": "2.5.5",
+      "title": "目標尺寸(加強)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Measure pointer targets >=44x44 CSS px or document equivalent/inline/default-agent/essential exceptions."
+    },
+    {
+      "id": "2.5.6",
+      "title": "並行輸入機制",
+      "level": "AAA",
+      "status": "active",
+      "check": "Permit platform input mechanisms concurrently unless restrictions are essential, security-related, or needed to respect user settings."
+    },
+    {
+      "id": "2.5.7",
+      "title": "拖曳動作",
+      "level": "AA",
+      "status": "active",
+      "check": "Complete dragging functionality with a single pointer without dragging; keyboard-only alternatives are insufficient. Assess essential/default-agent exceptions."
+    },
+    {
+      "id": "2.5.8",
+      "title": "目標尺寸(最小)",
+      "level": "AA",
+      "status": "active",
+      "check": "Measure targets >=24x24 CSS px or verify undersized-target 24px-diameter-circle spacing, equivalent, inline, default-agent, or essential exceptions."
+    },
+    {
+      "id": "3.1.1",
+      "title": "網頁語言",
+      "level": "A",
+      "status": "active",
+      "check": "Inspect valid html lang matching the primary human language, including error/login pages."
+    },
+    {
+      "id": "3.1.2",
+      "title": "局部語言",
+      "level": "AA",
+      "status": "active",
+      "check": "Mark language changes with valid lang; assess proper-name/technical-term/indeterminate/assimilated-word exceptions."
+    },
+    {
+      "id": "3.1.3",
+      "title": "特殊詞彙",
+      "level": "AAA",
+      "status": "active",
+      "check": "Offer meanings for unusual/restricted terms, idioms, and jargon."
+    },
+    {
+      "id": "3.1.4",
+      "title": "縮寫",
+      "level": "AAA",
+      "status": "active",
+      "check": "Offer expansions or meanings of abbreviations."
+    },
+    {
+      "id": "3.1.5",
+      "title": "閱讀程度",
+      "level": "AAA",
+      "status": "active",
+      "check": "When text requires above-lower-secondary reading ability after names/titles are removed, provide suitable supplemental content or a simpler version."
+    },
+    {
+      "id": "3.1.6",
+      "title": "發音",
+      "level": "AAA",
+      "status": "active",
+      "check": "Provide pronunciation information when meaning is ambiguous without it."
+    },
+    {
+      "id": "3.2.1",
+      "title": "焦點",
+      "level": "A",
+      "status": "active",
+      "check": "Focus a component without activating it; verify focus alone does not change context."
+    },
+    {
+      "id": "3.2.2",
+      "title": "輸入",
+      "level": "A",
+      "status": "active",
+      "check": "Change input/settings; avoid unexpected context changes unless the user was advised beforehand. Also inspect Taiwan open-format download requirements."
+    },
+    {
+      "id": "3.2.3",
+      "title": "一致的導覽",
+      "level": "AA",
+      "status": "active",
+      "check": "Compare repeated navigation across pages; preserve relative order unless the user changes it."
+    },
+    {
+      "id": "3.2.4",
+      "title": "一致的識別",
+      "level": "AA",
+      "status": "active",
+      "check": "Compare components with the same function; preserve consistent names/identification."
+    },
+    {
+      "id": "3.2.5",
+      "title": "依請求變更",
+      "level": "AAA",
+      "status": "active",
+      "check": "Change context only on user request or provide a mechanism to disable automatic changes."
+    },
+    {
+      "id": "3.2.6",
+      "title": "一致性幫助",
+      "level": "A",
+      "status": "active",
+      "check": "When repeated help/contact/self-help mechanisms exist, keep their relative order across pages unless the user changes it; adding help everywhere is not required."
+    },
+    {
+      "id": "3.3.1",
+      "title": "識別錯誤",
+      "level": "A",
+      "status": "active",
+      "check": "Trigger invalid/missing inputs; identify the field and describe the error in text."
+    },
+    {
+      "id": "3.3.2",
+      "title": "標籤或說明",
+      "level": "A",
+      "status": "active",
+      "check": "Provide visible labels, required-field instructions, and necessary format guidance before input."
+    },
+    {
+      "id": "3.3.3",
+      "title": "錯誤建議",
+      "level": "AA",
+      "status": "active",
+      "check": "For detected errors with known corrections, provide useful suggestions unless they compromise security or purpose."
+    },
+    {
+      "id": "3.3.4",
+      "title": "錯誤預防(法律、財務、個人資料)",
+      "level": "AA",
+      "status": "active",
+      "check": "For legal/financial/data-changing/test submissions, provide reversal, validation with correction opportunity, or review/confirmation/correction before final submission."
+    },
+    {
+      "id": "3.3.5",
+      "title": "協助",
+      "level": "AAA",
+      "status": "active",
+      "check": "Provide contextual help that users can access when needed."
+    },
+    {
+      "id": "3.3.6",
+      "title": "錯誤預防(全部)",
+      "level": "AAA",
+      "status": "active",
+      "check": "For all information submissions, provide reversal, validation/correction, or review/confirmation/correction."
+    },
+    {
+      "id": "3.3.7",
+      "title": "冗餘輸入",
+      "level": "A",
+      "status": "active",
+      "check": "Within one process, auto-fill or let users select previously supplied information; assess essential/security/no-longer-valid exceptions."
+    },
+    {
+      "id": "3.3.8",
+      "title": "無障礙認證(最小)",
+      "level": "AA",
+      "status": "active",
+      "check": "Test every login/recovery/MFA step for supported cognitive-test alternatives/assistance; permit password managers and paste. Assess object-recognition/personal-content exceptions only at this minimum level."
+    },
+    {
+      "id": "3.3.9",
+      "title": "無障礙認證(加強)",
+      "level": "AAA",
+      "status": "active",
+      "check": "Require cognitive-test alternatives or assistance at every authentication step; do not use object-recognition or personal-content exceptions."
+    },
+    {
+      "id": "4.1.1",
+      "title": "語法分析",
+      "level": "A",
+      "status": "removed",
+      "check": "Removed as obsolete in 115.11; retain only as a historical entry. Attribute actual broken relationships/behavior to active criteria."
+    },
+    {
+      "id": "4.1.2",
+      "title": "名稱、角色和值",
+      "level": "A",
+      "status": "active",
+      "check": "Inspect names, roles, states, values, properties, user-settable changes, notifications, and iframe titles in the accessibility tree and actual operation."
+    },
+    {
+      "id": "4.1.3",
+      "title": "狀態訊息",
+      "level": "AA",
+      "status": "active",
+      "check": "Verify status, error, and sequential-update announcements through suitable roles/live regions without requiring focus to move."
+    }
+  ],
+  "codes": [
+    {
+      "id": "AR2410300E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "4.1.3",
+      "message": "使用ARIArole=status顯示狀態訊息",
+      "source_page": 61
+    },
+    {
+      "id": "AR2410301E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "4.1.3",
+      "message": "使用ARIArole=alert或aria-live來識別錯誤",
+      "source_page": 61
+    },
+    {
+      "id": "AR2410302E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "4.1.3",
+      "message": "使用ARIArole=log識別順序訊息更新",
+      "source_page": 61
+    },
+    {
+      "id": "AR3130600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.3.6",
+      "message": "使用ARIA地標來識別網頁的區域",
+      "source_page": 61
+    },
+    {
+      "id": "CS1110113E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "裝飾性圖片均透過CSS來置入",
+      "source_page": 53
+    },
+    {
+      "id": "CS1110114E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "使用CSS方塊模型來處理版面設計，不要用佔位圖片",
+      "source_page": 54
+    },
+    {
+      "id": "CS1130103E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "文字的視覺呈現均以CSS來控制",
+      "source_page": 54
+    },
+    {
+      "id": "CS1130202E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "使用CSS來控制字詞內的字母間距",
+      "source_page": 55
+    },
+    {
+      "id": "CS1130203E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "DOM物件順序需與視覺順序一致",
+      "source_page": 55
+    },
+    {
+      "id": "CS1140101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.4.1",
+      "message": "當使用者介面元件取得焦點時，使用CSS變更其呈現方式",
+      "source_page": 55
+    },
+    {
+      "id": "CS1240405E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "在靠近網頁開頭處提供可以變更鏈結文字的控制元件，或使用CSS隱藏部分鏈結文字",
+      "source_page": 57
+    },
+    {
+      "id": "CS2140401C",
+      "kind": "machine",
+      "level": "AA",
+      "criterion": "1.4.4",
+      "message": "任何CSS樣式規則均使用具名字型尺寸，或者使用百分比或em等相對字型尺寸單位",
+      "source_page": 50
+    },
+    {
+      "id": "CS2140402E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.4",
+      "message": "縮放含有文字的表單組件",
+      "source_page": 59
+    },
+    {
+      "id": "CS2140500E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.5",
+      "message": "使用CSS來將文字取代成影像文字，並提供使用者介面控制元件來加以切換",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141000E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用媒體查詢和CSS網格重排網頁欄格",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141001E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用CSS彈性容器重排內容",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141002E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "針對長網址跟文字字符串可以進行重排",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141003E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用CSS寬度、最大寬度和彈性容器屬性調適標籤和輸入",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141006E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用媒體查詢來解除粘滯的頁首/頁尾",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141007E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用CSS最大寬度和高度容納圖像",
+      "source_page": 59
+    },
+    {
+      "id": "CS2141200E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "允許使用者按照其偏好覆蓋原有的網頁文字設定間距",
+      "source_page": 60
+    },
+    {
+      "id": "CS2141201E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "允許調整文字間距而不換行(wrapping)",
+      "source_page": 60
+    },
+    {
+      "id": "CS2141202E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "使用CSSletter-spacing來控制單字內空格",
+      "source_page": 60
+    },
+    {
+      "id": "CS2141203E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "以CSS設定行間距",
+      "source_page": 60
+    },
+    {
+      "id": "CS2141204E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "以em單位為單位設定文字容器的大小",
+      "source_page": 60
+    },
+    {
+      "id": "CS2240700E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.4.7",
+      "message": "使用者介面取得焦點時，使其鍵盤焦點指示具高可見度",
+      "source_page": 60
+    },
+    {
+      "id": "CS2250800E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.5.8",
+      "message": "使用min-height和min-width以確保足夠的目標間距",
+      "source_page": 60
+    },
+    {
+      "id": "CS3140800C",
+      "kind": "machine",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "僅有單一樣式表、使用者無法切換替代樣式表的情況下，不得指定主要內容之文字色彩與背景色彩",
+      "source_page": 50
+    },
+    {
+      "id": "CS3140801C",
+      "kind": "machine",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "需有CSS樣式規則使用百分比數值或相對長度單位來設定欄寬，且最大欄寬不得超過80個字母(中日韓語系的40個文字)",
+      "source_page": 50
+    },
+    {
+      "id": "CS3140801E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "如果不確定使用者能選擇前景及背景色彩，則不要指定主要內容的文字色彩與背景色彩，而且不要使用會變更這些預設值的科技功能",
+      "source_page": 62
+    },
+    {
+      "id": "CS3140802C",
+      "kind": "machine",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "需有CSS樣式規則指定行距",
+      "source_page": 50
+    },
+    {
+      "id": "CS3140802E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "在CSS當中劃分區域時僅指定邊框與版面，不要指定文字色彩及文字背景色彩",
+      "source_page": 62
+    },
+    {
+      "id": "CS3140803E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "文字僅對齊某一邊，或提供可移除文字左右全齊的機制",
+      "source_page": 62
+    },
+    {
+      "id": "CS3140900E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.9",
+      "message": "除非屬純裝飾或為正確傳達資訊而必須以特定樣式呈現文字，否則應當使用CSS來將文字取代成影像文字，並提供使用者介面控制元件來加以切換",
+      "source_page": 62
+    },
+    {
+      "id": "CS3230300E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.3.3",
+      "message": "使用CSS媒體查詢的reduce-motion避免畫面動態",
+      "source_page": 63
+    },
+    {
+      "id": "CS3240903E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.9",
+      "message": "在僅憑鏈結文字即可判斷鏈結目的下，於靠近網頁開頭處提供可變更鏈結文字長短切換的控制元件，或使用CSS隱藏部分鏈結文字",
+      "source_page": 63
+    },
+    {
+      "id": "CS3241200E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.12",
+      "message": "使用滾動邊距（scroll-padding）來消除內容遮蔽",
+      "source_page": 63
+    },
+    {
+      "id": "CS3241300E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.13",
+      "message": "建立雙色焦點指示器以確保與所有組件有足夠的對比度",
+      "source_page": 63
+    },
+    {
+      "id": "CS3241301E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.13",
+      "message": "在組件內建立強而明顯的焦點指示框線",
+      "source_page": 63
+    },
+    {
+      "id": "FA1130114E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "因在排版表格中使用了th標籤、caption標籤、非空值的summary屬性，導致成功準則1.3.1失敗",
+      "source_page": 55
+    },
+    {
+      "id": "FA1130204E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "因使用了線性化後無法保持有意義序列的HTML排版表格，而導致成功準則1.3.2失敗",
+      "source_page": 55
+    },
+    {
+      "id": "FA1210102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.1.1",
+      "message": "僅以指標裝置（含手勢）專屬事件處理某功能，而導致成功準則2.1.1失敗",
+      "source_page": 55
+    },
+    {
+      "id": "FA1210401E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.1.4",
+      "message": "由於實作的快捷鍵無法關閉或重新對應，而導致成功準則2.1.4失敗",
+      "source_page": 55
+    },
+    {
+      "id": "FA1220102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.1",
+      "message": "使用伺服器端技術在逾時後自動將頁面重新導向至其他頁面，而導致成功準則2.2.1失敗",
+      "source_page": 56
+    },
+    {
+      "id": "FA1250102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.1",
+      "message": "由於提供的功能只有基於路徑的手勢，而沒有單點指標替代方法，而導致成功準則2.5.1失敗",
+      "source_page": 57
+    },
+    {
+      "id": "FA1250202E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.2",
+      "message": "由於向下事件啟動一個控制元件而導致成功準則2.5.2失敗",
+      "source_page": 57
+    },
+    {
+      "id": "FA1250303E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.3",
+      "message": "由於無障礙名稱不包含可見標籤文字而導致失敗",
+      "source_page": 57
+    },
+    {
+      "id": "FA1250401E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.4",
+      "message": "由於無法停用動作啟動而導致失敗",
+      "source_page": 57
+    },
+    {
+      "id": "FA2130401E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.3.4",
+      "message": "由於將螢幕方向鎖定到橫向或直向視圖而導致失敗",
+      "source_page": 58
+    },
+    {
+      "id": "FA2130402E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.3.4",
+      "message": "有訊息顯示要求重新定向裝置設備，導致成功準則1.3.4失敗",
+      "source_page": 58
+    },
+    {
+      "id": "FA2130501E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.3.5",
+      "message": "由於自動完成屬性值不正確，而導致成功準則1.3.5失敗",
+      "source_page": 58
+    },
+    {
+      "id": "FA2141008E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "由於內容消失並且在內容重排後不可用，而導致成功準則1.4.10失敗",
+      "source_page": 59
+    },
+    {
+      "id": "FA2141205E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.12",
+      "message": "由於調整文字間距時內容被剪切或重疊，而導致成功準則1.4.12失敗",
+      "source_page": 60
+    },
+    {
+      "id": "FA2141301E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.13",
+      "message": "由於游標無法移動到懸浮的內容，而導致成功準則1.4.13失敗",
+      "source_page": 60
+    },
+    {
+      "id": "FA2240701E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.4.7",
+      "message": "由於樣式元素的輪廓和邊框會消除或使視覺焦點指示框線不可見，而導致成功準則2.4.7失敗",
+      "source_page": 60
+    },
+    {
+      "id": "FA2241100E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.4.11",
+      "message": "由於黏性頁腳或頁首完全遮蔽了焦點元素，而導致成功準則2.4.11失敗",
+      "source_page": 60
+    },
+    {
+      "id": "FA2250700E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.5.7",
+      "message": "未提供不需拖曳的單一指標操作方式，而導致成功準則2.5.7失敗",
+      "source_page": 60
+    },
+    {
+      "id": "FA2330801E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.8",
+      "message": "由於阻止以相同格式重新輸入密碼或代碼，導致成功準則3.3.8和3.3.9失敗",
+      "source_page": 61
+    },
+    {
+      "id": "FA2410303E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "4.1.3",
+      "message": "由於提供無法通過角色或屬性以程式化確定的狀態消息而導致成功準則4.1.3失敗",
+      "source_page": 61
+    },
+    {
+      "id": "FA3250600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.5.6",
+      "message": "由於觸控設備上的互動僅限於觸控而失敗",
+      "source_page": 63
+    },
+    {
+      "id": "GN1110107E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "提供簡短替代文本描述現場純音訊內容目的及現場純視訊內容目的",
+      "source_page": 53
+    },
+    {
+      "id": "GN1110109E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "針對虛擬實境、立體成像、或環場空間等知覺體驗的非文字內容需要有替代文字或長描述，並至少要為這些非文字內容提供描述性的識別資訊",
+      "source_page": 53
+    },
+    {
+      "id": "GN1110110E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "任何人機驗證(CAPTCHA)均需提供描述人機驗證(CAPTCHA)目的的替代文字",
+      "source_page": 53
+    },
+    {
+      "id": "GN1110111E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "網頁上任何一個人機驗證(CAPTCHA)均至少有另一個運用不同形式的人機驗證(CAPTCHA)，且具有相同的目的與功能",
+      "source_page": 53
+    },
+    {
+      "id": "GN1120100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.1",
+      "message": "提供預先錄製之純音訊內容的等義資訊替代內容",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.1",
+      "message": "提供預先錄製之純視訊內容的等義資訊替代內容",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.1",
+      "message": "提供描述預先錄製之重要視訊內容的音訊，並描述其本身係用於描述重要視訊內容",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.2",
+      "message": "提供預先錄製之音訊內容的隱藏式或非隱藏式(永遠看得到的)字幕",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120300E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.3",
+      "message": "提供預先錄製之時序媒體的替代內容，並在時序媒體的非文字內容後馬上放置連往替代內容的鏈結",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120301E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.3",
+      "message": "除非同步媒體是文字內容的替代媒體，並且有明確地標示出來，否則就為影片提供音訊描述或延伸音訊描述，或提供使用者可選取、且含有音訊描述的第二音軌",
+      "source_page": 54
+    },
+    {
+      "id": "GN1120302E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.2.3",
+      "message": "影片畫面僅呈現講者頭部視訊時，提供靜態文字替代",
+      "source_page": 54
+    },
+    {
+      "id": "GN1130100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用文字來傳達藉由文字呈現上的變化所傳達的資訊",
+      "source_page": 54
+    },
+    {
+      "id": "GN1130101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用顏色線索的時候就使用語意標記",
+      "source_page": 54
+    },
+    {
+      "id": "GN1130102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "從呈現當中抽離資訊與結構，以便啟用不同的呈現",
+      "source_page": 54
+    },
+    {
+      "id": "GN1130200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "將內容依據有意義的序列來排序",
+      "source_page": 55
+    },
+    {
+      "id": "GN1130201E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "使用萬國碼的右至左標記(RLM)或左至右標記(LRM)來即席混用文字走向，或在行內組件使用文字方向屬性以解決巢狀文字走向的問題",
+      "source_page": 55
+    },
+    {
+      "id": "GN1130300E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.3",
+      "message": "針對若無文字項目識別則必須仰賴感官資訊才能理解的內容，提供文字項目識別",
+      "source_page": 55
+    },
+    {
+      "id": "GN1140100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.4.1",
+      "message": "確保所有藉由顏色所傳達出來的訊息，在沒有顏色後仍然能夠傳達出來",
+      "source_page": 55
+    },
+    {
+      "id": "GN1140102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.4.1",
+      "message": "對有顏色的表單控制標題，提供文字線索提示",
+      "source_page": 55
+    },
+    {
+      "id": "GN1140200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.4.2",
+      "message": "除非聲音在三秒鐘內會自動關閉，或者在靠近頁面開頭處有提供可以關閉自動播放的聲音的控制元件，否則只有當使用者請求時才播放聲音",
+      "source_page": 55
+    },
+    {
+      "id": "GN1210100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.1.1",
+      "message": "提供由鍵盤觸發的事件處理程式",
+      "source_page": 55
+    },
+    {
+      "id": "GN1210200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.1.2",
+      "message": "確認使用者不會困在內容中",
+      "source_page": 55
+    },
+    {
+      "id": "GN1220100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.1",
+      "message": "在多頁表單的第一頁提供一個核選框，讓使用者可以要求較寬鬆的階段時間限制，或者完全不要有階段時間限制",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.1",
+      "message": "提供能讓使用者將時間限制設為預設時間限制十倍，或完全關閉時間限制的方法",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.2",
+      "message": "讓內容能加以暫停，並可從暫停處重新開始",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220201E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.2",
+      "message": "建立閃動少於5秒鐘的內容",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220202E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.2",
+      "message": "在網頁內使用可以停止移動、閃動、自動更新等內容的控制元件",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220204E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.2",
+      "message": "提供鏈結、按鈕，或任何可以不閃動內容即重新載入頁面的機制",
+      "source_page": 56
+    },
+    {
+      "id": "GN1220205E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.2.2",
+      "message": "動畫GIF圖檔之閃動時間不超過五秒鐘",
+      "source_page": 56
+    },
+    {
+      "id": "GN1230100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.3.1",
+      "message": "使用工具來確認內容不會超出一般閃爍閾值或紅閃爍閾值，或者確認在任何一秒鐘的週期內，沒有任何內容元素會閃爍超過三次",
+      "source_page": 56
+    },
+    {
+      "id": "GN1230101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.3.1",
+      "message": "能讓閃爍區域保持夠小",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "在每一個頁面頂端加入一個鏈結，直接連往主要的內容區域",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "在重複內容的區塊開頭加入鏈結，連到該區塊結束之處",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "在頁面頂端加入鏈結，連到該頁面的內容區域的開頭位置",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240103E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "使用結構性組件來將鏈結分群",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240104E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "在每一個內容區段開頭處提供標題組件",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240105E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "根據結構性標記來將內容定位",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240300E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.3",
+      "message": "按照內容的序列及關連性來安排互動元件的放置順序",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240401E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "針對脈絡中的鏈結，提供描述鏈結目的的鏈結文字",
+      "source_page": 56
+    },
+    {
+      "id": "GN1240500E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.5",
+      "message": "提供網站導覽、導覽工具或機制、搜尋功能、網頁清單鏈結等功能，協助使用者尋找內容",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.1",
+      "message": "提供單點指標控制元件以實現與基於路徑或多點手勢相同的結果",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.1",
+      "message": "為控制滑塊提供單點啟動",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.2",
+      "message": "確保可以取消拖放操作",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250201E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.2",
+      "message": "使用網頁規範原生控制元件來確保在向上事件發生時可觸發功能",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250300E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.3",
+      "message": "確保無障礙名稱包含可見文字",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250301E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.3",
+      "message": "將無障礙名稱與可見標籤匹配",
+      "source_page": 57
+    },
+    {
+      "id": "GN1250400E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.5.4",
+      "message": "為動作啟動輸入提供常規控制元件和應用程式設定",
+      "source_page": 57
+    },
+    {
+      "id": "GN1310100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.1.1",
+      "message": "明確指出網頁文字所使用的人類語言",
+      "source_page": 57
+    },
+    {
+      "id": "GN1320100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.2.1",
+      "message": "物件單純取得焦點時不要觸發脈絡變更，等使用者啟動該物件後才觸發脈絡變更",
+      "source_page": 57
+    },
+    {
+      "id": "GN1320200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.2.2",
+      "message": "表單控制元件之行為將使網頁跳轉或變更，則在脈絡變更前需先明確描述將發生的事情",
+      "source_page": 57
+    },
+    {
+      "id": "GN1320201E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.2.2",
+      "message": "使用按鈕來做出行動並啟動脈絡變更",
+      "source_page": 57
+    },
+    {
+      "id": "GN1320202E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.2.2",
+      "message": "提供下載檔案格式為不需依賴特定文書商用軟體即能開啟之檔案",
+      "source_page": 57
+    },
+    {
+      "id": "GN1320600E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.2.6",
+      "message": "在一致的位置提供「聯繫我們」的鏈接",
+      "source_page": 57
+    },
+    {
+      "id": "GN1330100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.1",
+      "message": "提供文字描述以指明未完成的必填欄位",
+      "source_page": 57
+    },
+    {
+      "id": "GN1330101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.1",
+      "message": "使用者輸入的內容不在允許清單中，或格式未符合所需時，均提供文字描述",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.1",
+      "message": "資料成功送出後，提供成功的回饋",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "在使用者送出資料前，先描述會發生什麼事",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330201E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "提供文字描述以指明需填寫的必填欄位",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330202E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "提供預期的資料格式與範例",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330203E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "妥善定位描述性標籤的位置，使關連性的可預期性最大化",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330204E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "使用毗鄰的按鈕來標示輸入區目的",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330205E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "在表單或一組表單欄位開頭處提供文字指示來描述必要的輸入欄位",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330206E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.2",
+      "message": "指出必需的表單控制元件",
+      "source_page": 58
+    },
+    {
+      "id": "GN1330700E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "3.3.7",
+      "message": "在流程中提供上一步驟的數據",
+      "source_page": 58
+    },
+    {
+      "id": "GN1410200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "4.1.2",
+      "message": "使用者介面元件應暴露名稱與角色，允許直接設定可由使用者設定的屬性，並在變更時提供通知",
+      "source_page": 58
+    },
+    {
+      "id": "GN2120400E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.2.4",
+      "message": "為現場的同步媒體建立字幕",
+      "source_page": 58
+    },
+    {
+      "id": "GN2120500E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.2.5",
+      "message": "為同步媒體中所有的視訊內容提供具有音訊描述或延伸音訊描述，或提供使用者可選取、且含有音訊描述的第二音軌",
+      "source_page": 58
+    },
+    {
+      "id": "GN2130400E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.3.4",
+      "message": "允許使用者可以使用不同方向操作控制元件",
+      "source_page": 58
+    },
+    {
+      "id": "GN2140300E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.3",
+      "message": "確認文字(及影像文字)與文字後面的背景間，至少有4.5:1的對比值",
+      "source_page": 58
+    },
+    {
+      "id": "GN2140301E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.3",
+      "message": "確認大尺寸文字(及影像文字)與文字後面的背景間，至少有3:1的對比值",
+      "source_page": 58
+    },
+    {
+      "id": "GN2140302E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.3",
+      "message": "提供具對比值至少4.5:1，且可讓使用者將呈現切換成具有充分對比值(文字及影像文字至少4.5:1，大尺寸文字及影像文字至少3:1)的控制元件",
+      "source_page": 58
+    },
+    {
+      "id": "GN2140303E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.3",
+      "message": "如果無法確認對比值充分(文字及影像文字至少4.5:1，大尺寸文字及影像文字至少3:1)，則不要指定背景色彩，也不要指定前景色彩，而且不要使用會變更這些預設值的科技功能",
+      "source_page": 59
+    },
+    {
+      "id": "GN2140400E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.4",
+      "message": "使用具有支援縮放功能且容易取得的使用者代理的科技，或者在頁面上提供可讓使用者變大所有文字尺寸到百分之兩百為止的控制元件",
+      "source_page": 59
+    },
+    {
+      "id": "GN2140401E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.4",
+      "message": "使用流動版面設計，或者確認當文字尺寸變更而文字容器尺寸並未變更時，不會喪失任何內容或功能",
+      "source_page": 59
+    },
+    {
+      "id": "GN2141005E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "在內容內提供選項以切換到不需要用戶水平滾動以閱讀文字行的佈局",
+      "source_page": 59
+    },
+    {
+      "id": "GN2141009E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "在垂直捲動的頁面中，可水平捲動的區域面板，其設計本身也必須被容納於320CSS像素的寬度內",
+      "source_page": 59
+    },
+    {
+      "id": "GN2141101E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.11",
+      "message": "確保圖示的對比度為3：1",
+      "source_page": 59
+    },
+    {
+      "id": "GN2141102E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.11",
+      "message": "在相鄰顏色之間的邊界處提供足夠的對比度",
+      "source_page": 59
+    },
+    {
+      "id": "GN2141103E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.11",
+      "message": "提供具有足夠對比度的控制元件，以允許用戶切換到足夠對比度的呈現",
+      "source_page": 59
+    },
+    {
+      "id": "GN2240600E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.4.6",
+      "message": "提供描述性的標題(headings)",
+      "source_page": 60
+    },
+    {
+      "id": "GN2240601E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "2.4.6",
+      "message": "提供描述性的標籤(label)",
+      "source_page": 60
+    },
+    {
+      "id": "GN2320300E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.2.3",
+      "message": "每一次會重複出現的元件出現時，均按照相同的相對順序來呈現",
+      "source_page": 60
+    },
+    {
+      "id": "GN2320400E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.2.4",
+      "message": "按照具有相同功能的內容，一致地使用標籤、名稱、替代文字",
+      "source_page": 60
+    },
+    {
+      "id": "GN2330300E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.3",
+      "message": "提供文字描述以指明未完成的必填欄位，並建立可以讓使用者跳到出錯之處的機制",
+      "source_page": 60
+    },
+    {
+      "id": "GN2330301E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.3",
+      "message": "使用者輸入的內容不在允許清單中，或格式未符合所需時，均提供文字描述，並提供建議的文字校正",
+      "source_page": 60
+    },
+    {
+      "id": "GN2330400E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.4",
+      "message": "在法律、財務、個人資料方面，均提供取回已刪除資訊的能力",
+      "source_page": 61
+    },
+    {
+      "id": "GN2330401E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.4",
+      "message": "在法律、財務、個人資料方面，均提供表單遞交後何時可由使用者更新或取消的時段說明",
+      "source_page": 61
+    },
+    {
+      "id": "GN2330402E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.4",
+      "message": "在法律、財務、個人資料方面，均提供使用者在送出答覆前加以檢查及更正的能力",
+      "source_page": 61
+    },
+    {
+      "id": "GN2330403E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.4",
+      "message": "在法律、財務、個人資料方面，均要求確認後才繼續所選的行動",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.6",
+      "message": "在視訊串流當中包含手語翻譯或提供可以在不同視埠播放、或由播放軟體疊合在影像上的手語翻譯同步視訊",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120700E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.7",
+      "message": "當前景音訊停頓處不足插入音訊描述時，為影片提供延伸音訊描述",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120800E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.8",
+      "message": "提供所有時序媒體的替代內容，並在時序媒體的非文字內容後馬上放置連往替代內容的鏈結",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120801E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.8",
+      "message": "提供所有純視訊內容的時序媒體替代內容",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120900E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.9",
+      "message": "提供現場純音訊內容的文字形式替代內容，或在網頁內合併採用現場音訊字幕服務",
+      "source_page": 61
+    },
+    {
+      "id": "GN3120901E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.2.9",
+      "message": "提供連往預先準備好的發言文字逐字稿的鏈結；如果有劇本的話，則提供連往劇本的鏈結",
+      "source_page": 61
+    },
+    {
+      "id": "GN3140600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.6",
+      "message": "確認文字(及影像文字)與文字後面的背景間，至少有7:1的對比值",
+      "source_page": 61
+    },
+    {
+      "id": "GN3140601E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.6",
+      "message": "確認大尺寸文字(及影像文字)與文字後面的背景間，至少有4.5:1的對比值",
+      "source_page": 62
+    },
+    {
+      "id": "GN3140602E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.6",
+      "message": "提供具對比值至少7:1，且可讓使用者將呈現切換成具有充分對比值(文字及影像文字至少7:1，大尺寸文字及影像文字至少4.5:1)的控制元件",
+      "source_page": 62
+    },
+    {
+      "id": "GN3140603E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.6",
+      "message": "如果無法確認對比值充分(文字及影像文字至少7:1，大尺寸文字及影像文字至少4.5:1)，則不要指定背景色彩，也不要指定前景色彩，而且不要使用會變更這些預設值的科技功能",
+      "source_page": 62
+    },
+    {
+      "id": "GN3140700E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.7",
+      "message": "混音處理音訊檔案，使非語音的聲音至少比語音音訊內容低20分貝",
+      "source_page": 62
+    },
+    {
+      "id": "GN3140800E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "使用能夠變更文字區塊前景與背景且容易取得的使用者代理的科技，或者在頁面上提供前景色彩與背景色彩的多重色彩選取工具",
+      "source_page": 62
+    },
+    {
+      "id": "GN3140805E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "在網頁上提供可以增加行距及段落間距的按鈕",
+      "source_page": 62
+    },
+    {
+      "id": "GN3210301E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.1.3",
+      "message": "確認所有功能都能透過鍵盤介面來操作",
+      "source_page": 62
+    },
+    {
+      "id": "GN3220300E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.2.3",
+      "message": "讓使用者可以在沒有任何時間限制的情況下完成活動",
+      "source_page": 62
+    },
+    {
+      "id": "GN3220400E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.2.4",
+      "message": "提供可以延遲任何內容更新的機制",
+      "source_page": 63
+    },
+    {
+      "id": "GN3220500E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.2.5",
+      "message": "儲存資料以便使用者重新認證後仍可使用",
+      "source_page": 63
+    },
+    {
+      "id": "GN3220501E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.2.5",
+      "message": "在重新認證的頁面上將使用者資料編碼為隱藏或加密的資料",
+      "source_page": 63
+    },
+    {
+      "id": "GN3230200E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.3.2",
+      "message": "確認在任何一秒鐘的週期內，沒有任何內容元素會閃爍超過三次",
+      "source_page": 63
+    },
+    {
+      "id": "GN3240900E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.9",
+      "message": "鏈結本身應提供描述鏈結目的的鏈結文字",
+      "source_page": 63
+    },
+    {
+      "id": "GN3241000E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.10",
+      "message": "使用標題來組織網頁",
+      "source_page": 63
+    },
+    {
+      "id": "GN3241302E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.13",
+      "message": "使用作者提供的可見焦點指示框線",
+      "source_page": 63
+    },
+    {
+      "id": "GN3310300E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.3",
+      "message": "針對不常見的字詞，列舉詞彙、提供定義，或提供搜尋線上辭典的功能",
+      "source_page": 63
+    },
+    {
+      "id": "GN3310400E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.4",
+      "message": "針對縮寫字，列舉詞彙、提供其展開的形式或定義，或提供搜尋線上辭典的功能",
+      "source_page": 63
+    },
+    {
+      "id": "GN3310500E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.5",
+      "message": "提供文字的口說版本",
+      "source_page": 63
+    },
+    {
+      "id": "GN3310501E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.5",
+      "message": "提供不需超出國中閱讀能力程度即可理解的文字摘要",
+      "source_page": 63
+    },
+    {
+      "id": "GN3310502E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.5",
+      "message": "提供視覺插圖、圖片、符號以協助解釋概念、事件、程序",
+      "source_page": 64
+    },
+    {
+      "id": "GN3310503E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.5",
+      "message": "讓文字更容易閱讀",
+      "source_page": 64
+    },
+    {
+      "id": "GN3310504E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.5",
+      "message": "針對使用內容所必需理解之資訊、概念、程序，提供手語版本",
+      "source_page": 64
+    },
+    {
+      "id": "GN3310600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.1.6",
+      "message": "某個字詞若不知其發音，就算依據前後文脈絡來判讀而仍會造成混淆時，即列舉詞彙、提供發音或發音資訊",
+      "source_page": 64
+    },
+    {
+      "id": "GN3320500E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.2.5",
+      "message": "除非使用即刻用戶端重新導向，否則不要自動更新內容，而是提供可以請求內容更新的機制",
+      "source_page": 64
+    },
+    {
+      "id": "GN3320501E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.2.5",
+      "message": "在使用者請求的情況下才開出新視窗，並在鏈結文字中指出此行為",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330500E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.5",
+      "message": "在所有網頁上均提供協助",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330501E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.5",
+      "message": "在文字輸入區域提供拼寫檢查與建議",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330502E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.5",
+      "message": "利用標題屬性來提供針對脈絡而作的協助說明",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330600E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.6",
+      "message": "在所有情況中，均提供取回已刪除資訊的能力",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330601E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.6",
+      "message": "在所有情況中，均提供表單遞交後何時可由使用者更新或取消的時段說明",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330602E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.6",
+      "message": "在所有情況中，均提供使用者在送出答覆前加以檢查及更正的能力",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330603E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.6",
+      "message": "在所有情況中，均要求確認後才繼續所選的行動",
+      "source_page": 64
+    },
+    {
+      "id": "GN3330900E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "3.3.9",
+      "message": "電子郵件鏈結驗證(加強)",
+      "source_page": 64
+    },
+    {
+      "id": "HM1110100C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "圖片<img>組件需有替代文字(alt)屬性",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110100E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "圖片需要加上有意義、可代替圖片在文件上下文中的功能及內容的替代文字",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110101C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "影像地圖<map>的區域<area>組件需有替代文字(alt)屬性，且其值不得為空字串或空白",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110101E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "僅在一組緊連圖片中的其中一個項目使用替代文字，描述該組圖片的所有項目",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110102E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "提供影像地圖區域的替代文字，並要能確實表達這些地圖區域的功能與目的",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110103C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "字符圖案、表情符號、其他挪用文字外型作為表意功能之語言形式等內容，需透過合適組件的標題(title)屬性來提供替代文字，且其值不得為空字串或空白",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110103E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "為非文字內容在相鄰處提供其他位置的長描述連結，或在靠近的文字中提供長描述並在非文字內容的短描述中參照對應",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110104C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "型別(type)屬性值為圖片<img>之輸入<input>組件，需有替代文字(alt)屬性，且其值不得為空字串或空白",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110104E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "提供字符圖案、表情符號、其他挪用文字外型作為表意功能之語言形式的替代文字，且其替代文字需有意義、可代替前述內容之目的與功能",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110105C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "物件組件(如<applet>、<embed>、<object>)需有替代文字內容",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110105E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "圖片以外的非文字內容需要有替代文字或長描述，並需具有與該內容或物件相同目的、呈現相同資訊，或者可提供概略描述、俗名、描述性名稱",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110106C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "替代文字(alt)屬性值為空字串的圖片<img>組件，不得有標題(title)屬性",
+      "source_page": 49
+    },
+    {
+      "id": "HM1110106E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "作為「送出」按鈕之用的圖片需提供替代文字，且此替代文字需能充分表達此按鈕之意義與功能",
+      "source_page": 53
+    },
+    {
+      "id": "HM1110112E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.1.1",
+      "message": "對於輔助科技應當要忽略的圖片，使用空字串作為替代文字，並且不可使用標題屬性",
+      "source_page": 53
+    },
+    {
+      "id": "HM1130100C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "網頁中的標題<h1>-<h6>組件必須要按照正確的巢狀層次結構來配置",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130101C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用範疇(scope)屬性，來建立表格行列標題儲存格與資料儲存格之間的關連",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130102C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用對應識別碼(id)與標頭(headers)屬性，來建立表格行列標題儲存格與資料儲存格之間的關連",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130103C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "在表單選擇＜select＞組件中，以選項分群＜optgroup＞組件來將選項＜option＞組件加以分群",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130104C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "可見的表單控制元件均需有對應的標籤<label>組件，或有標題(title)屬性，且其內容或值均不得為空字串或空白",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130104E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "適當使用巢狀標題呈現文件結構",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130105C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "表單控制元件組件以欄位組＜fieldset＞組件來分群，並以說明＜legend＞組件來提供標題",
+      "source_page": 49
+    },
+    {
+      "id": "HM1130105E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用語意組件來標記結構",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130106E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用具語意的標記來標出強調的文字或特殊文字",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130107E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用表格標記來呈現表格資訊",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130109E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "以有意義的標記來建立表格行列標題與資料表格的關連",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130110E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "對於複雜表格，以有意義的標記來建立表格行列標題儲存格與資料儲存格之間的關連",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130111E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "將表單控制元件及表單內的選項予以適當地分群並提供相關的描述",
+      "source_page": 54
+    },
+    {
+      "id": "HM1130112E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "使用標籤組件將文字標籤與表單控制元件建立關連",
+      "source_page": 55
+    },
+    {
+      "id": "HM1130113E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "1.3.1",
+      "message": "無法使用標籤組件的情況下，用標題屬性來指明表單控制元件",
+      "source_page": 55
+    },
+    {
+      "id": "HM1130200C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "1.3.2",
+      "message": "混用多國語言內容，出現已知文字走向不同的內容時，需有萬國碼的右至左標記(RLM)或左至右標記(LRM)，或以行內組件搭配使用文字方向(dir)屬性",
+      "source_page": 49
+    },
+    {
+      "id": "HM1240102C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "2.4.1",
+      "message": "以導覽標籤將相關鏈結組件做分群",
+      "source_page": 49
+    },
+    {
+      "id": "HM1240200C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "2.4.2",
+      "message": "網頁需有標題<title>組件，且其值不得為空字串或空白",
+      "source_page": 49
+    },
+    {
+      "id": "HM1240200E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.2",
+      "message": "提供網頁的描述性標題",
+      "source_page": 56
+    },
+    {
+      "id": "HM1240400C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "連往相同資源的毗鄰圖片與文字，其由替代文字及文字內容產生之鏈結文字只能有一份",
+      "source_page": 50
+    },
+    {
+      "id": "HM1240400E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "使用鏈結文字及前後的脈絡情境來指明鏈結目的",
+      "source_page": 56
+    },
+    {
+      "id": "HM1240401C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "具有連結目的之鏈結<a>組件均需有鏈結文字，且其內容不得為空字串或空白；若此鏈結<a>組件前後尚有其他內容，則亦需有標題(title)屬性，且其值不得為空字串或空白",
+      "source_page": 50
+    },
+    {
+      "id": "HM1240402E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "合併相同資源的毗鄰圖片與文字鏈結",
+      "source_page": 56
+    },
+    {
+      "id": "HM1240403E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "提供描述鏈結組件鏈結目的的鏈結文字",
+      "source_page": 56
+    },
+    {
+      "id": "HM1240404E",
+      "kind": "manual",
+      "level": "A",
+      "criterion": "2.4.4",
+      "message": "針對脈絡中的鏈結，用標題屬性來補充鏈結文字",
+      "source_page": 57
+    },
+    {
+      "id": "HM1310100C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "3.1.1",
+      "message": "網頁根組件需有語言(lang)屬性，且其值必須合於規範，不得為空字串或空白",
+      "source_page": 50
+    },
+    {
+      "id": "HM1410200C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "4.1.2",
+      "message": "依據規格使用網頁語法，完整提供各組件之角色(role)、名稱(name)、屬性(attribute)、值(value)",
+      "source_page": 50
+    },
+    {
+      "id": "HM1410201C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "4.1.2",
+      "message": "內嵌式頁框<iframe>組件需有標題(title)屬性，且其值不得為空字串或空白",
+      "source_page": 50
+    },
+    {
+      "id": "HM2130500E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.3.5",
+      "message": "使用HTML自動完成之屬性",
+      "source_page": 58
+    },
+    {
+      "id": "HM2310200C",
+      "kind": "machine",
+      "level": "AA",
+      "criterion": "3.1.2",
+      "message": "網頁內容中，使用不同人類語言的內容區段，必須以合於語意的組件標記，該組件並要有語言(lang)屬性，且其值必須合於規範，不得為空字串或空白",
+      "source_page": 50
+    },
+    {
+      "id": "HM2310200E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.1.2",
+      "message": "明確地指出網頁內容中人類語言的轉換",
+      "source_page": 60
+    },
+    {
+      "id": "HM2330800E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "3.3.8",
+      "message": "提供適當標記的電子郵件和密碼輸入",
+      "source_page": 61
+    },
+    {
+      "id": "HM3140806E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "1.4.8",
+      "message": "除非是要在內容當中提供選項，讓使用者可以切換到無需水平捲動即可閱讀整行文字的版面，否則當檢視視窗變窄時，不要干預使用者代理的文字重新流向",
+      "source_page": 62
+    },
+    {
+      "id": "HM3240800E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.8",
+      "message": "使用導覽工具，指明目前所在網頁在一整組網頁或整個網站中的位置，以及與其他網頁之間的關連性",
+      "source_page": 63
+    },
+    {
+      "id": "HM3240900C",
+      "kind": "machine",
+      "level": "AAA",
+      "criterion": "2.4.9",
+      "message": "任何具有連結目的之單獨鏈結組件均需有鏈結文字及標題屬性，且鏈結文字之內容及標題屬性之值均不得為空字串或空白",
+      "source_page": 51
+    },
+    {
+      "id": "HM3240901E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.9",
+      "message": "將指向同一資源的相鄰圖片與文字合併為單一鏈結，並確保該單一鏈結本身的鏈結文字可描述其目的",
+      "source_page": 63
+    },
+    {
+      "id": "HM3240902E",
+      "kind": "manual",
+      "level": "AAA",
+      "criterion": "2.4.9",
+      "message": "鏈結組件本身應提供描述鏈結目的的鏈結文字",
+      "source_page": 63
+    },
+    {
+      "id": "HM3241000C",
+      "kind": "machine",
+      "level": "AAA",
+      "criterion": "2.4.10",
+      "message": "網頁必須要使用標頭組件",
+      "source_page": 51
+    },
+    {
+      "id": "ME1320200C",
+      "kind": "machine",
+      "level": "A",
+      "criterion": "3.2.2",
+      "message": "提供下載之檔案格式應為開放格式如ODF、PDF、HTML等檔案格式",
+      "source_page": 50
+    },
+    {
+      "id": "SC2141004E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.10",
+      "message": "使用與文字大小成比例的方式計算大小和位置",
+      "source_page": 59
+    },
+    {
+      "id": "SC2141300E",
+      "kind": "manual",
+      "level": "AA",
+      "criterion": "1.4.13",
+      "message": "使懸浮或焦點內容可移除或維持，使其呈現可忽略或持續",
+      "source_page": 60
+    }
+  ],
+  "source": {
+    "official_page": "https://law.moda.gov.tw/LawContent.aspx?id=GL000192",
+    "official_download": "https://law.moda.gov.tw/Download.ashx?FileID=11455&id=GL000192&type=LAW",
+    "announcement": "https://accessibility.moda.gov.tw/News/Detail/5608?Category=43",
+    "mirror": "https://github.com/HSU-YU-MING/ramp-a11y/blob/main/docs/tw-web-accessibility-spec-115.pdf",
+    "mirror_blob_sha": "a156b31b40aac843f6131cc910297a04a2facc3e",
+    "downloaded_sha256": "0ad5838a149420f834cb15dd74748c2ba34a63880c1c0cfe2196b9b90633e228",
+    "retrieval_note": "Official 115 May document read from a public mirror because official download content types were unsupported; byte equality with the official download was not independently established. Page numbers are PDF page indices."
+  }
+}

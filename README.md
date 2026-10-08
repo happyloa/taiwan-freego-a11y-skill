@@ -1,157 +1,95 @@
 # taiwan-freego-a11y
 
-這是一個 [Claude Code](https://code.claude.com) **Skill**，讓 Claude 在撰寫、編輯或審查網頁 UI 時，自動套用台灣**《網站無障礙規範 2.0》**（等同 **WCAG 2.0 AA**）——即政府 **Freego** 檢測器所驗查的規則。
+[Claude Code](https://code.claude.com/docs/en/skills) Skill，讓 Claude 在建立、修改及稽核網頁 UI 時，套用台灣 **《網站無障礙規範 (115.11)》／WCAG 2.2**，預設目標 **AA**。
 
-預設強制執行以下規範：
+**2.0.0** 已改用新版完整清單，包含 A／AA／AAA 的 **86 項有效成功準則、28 個機器檢測碼（C）、216 個人工稽核碼（E）**。4.1.1 已刪除，保留歷史紀錄但不算有效要求。
 
-- **相對字型大小**（rem / em / % / 具名值，禁用 px）— Freego `CS2140401C`
-- **表單控制項標籤**（`<label for>` + `id`，或 `aria-label`）— Freego `HM1130104C`
-- **`<fieldset>` 第一個子元素須為 `<legend>`**（`aria-label` 不能取代）— Freego `HM1130103C`
-- **表格標頭 `scope`** + `<caption>`（空角格使用 `<td>`）— Freego `HM1130101C`
-- **AA 色彩對比度 ≥ 4.5:1**（例如：避免以 Tailwind `gray-400` 顯示輔助文字）
-- **標題層級**（唯一 `<h1>`、不跳級、視覺上的標題須標記為對應層級的 `<h1>`–`<h6>`）— WCAG 2.0 AA
-- ARIA 模式：錯誤訊息用 `role="alert"`、裝飾性元素用 `aria-hidden`、`aria-pressed` / `aria-expanded`、離屏選單用 `inert`、`lang` 屬性與可縮放的 viewport
+新版於 2026-05-29 公布，**2026-11-30** 起用於新版標章認證；目前可先依新版開發。參考 [官方公告](https://accessibility.moda.gov.tw/News/Detail/5608?Category=43)及 [來源、版本與文件取得說明](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/sources-and-versions.md)。
 
-完整規則詳見：[`plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md`](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md)。
+## 覆蓋範圍
 
----
+| 目標等級 | 有效成功準則（累計） | C 碼（累計） | E 碼（累計） |
+| --- | ---: | ---: | ---: |
+| A | 31 | 21 | 103 |
+| AA（預設） | 55 | 23 | 161 |
+| AAA | 86 | 28 | 216 |
 
-## 安裝方式 A：以 Plugin 安裝（推薦，可自動更新）
+- 補齊媒體替代、結構、表格、表單、對比、縮放、重排、鍵盤、讀屏、指標操作及完整流程檢查。
+- 納入新版 AA 範圍的六項要求：焦點不遮蔽、拖曳替代、最小目標尺寸、一致性幫助、冗餘輸入、無障礙認證；另外保留 AAA 的更嚴格要求。
+- 修正表單／表格代碼：`HM1130103C` 是選項群組，`HM1130105C` 才是 fieldset／legend。
+- 附上每個 C／E 碼的官方訊息、對應準則及 PDF 頁碼，並區分規範要求、替代技術與常見失敗。
+- 稽核結果須區分 Pass／Fail／Pending／Not applicable，附實際證據；未執行的人工檢查保持 Pending。
 
-在 Claude Code 中，將此 repo 加入 marketplace，再安裝 plugin：
+這是完整的規範對照與修正工作流。**不代表單靠 Skill 或機器掃描就能證明網站全部通過**；鍵盤、讀屏、媒體及登入流程等仍需實測。各版 Freego 的實際執行能力，也須另外確認。
 
-```text
-/plugin marketplace add happyloa/taiwan-freego-a11y-skill
-/plugin install taiwan-freego-a11y@happyloa-skills
-```
+## 安裝
 
-（若您已 fork 此 repo，請將 `happyloa/taiwan-freego-a11y-skill` 替換為您的 `owner/repo`。）
-
-日後更新：
-
-```text
-/plugin marketplace update
-/plugin update taiwan-freego-a11y@happyloa-skills
-```
-
-## 安裝方式 B：複製 Skill 資料夾（最簡單，無需 Plugin）
-
-```bash
-git clone https://github.com/happyloa/taiwan-freego-a11y-skill.git
-# 個人全域（所有專案適用）：
-cp -r taiwan-freego-a11y-skill/plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y ~/.claude/skills/
-# 或僅限單一專案：cp -r ... <your-project>/.claude/skills/
-```
-
-## 使用方式
-
-Claude 會根據 Skill 的 `description` **自動啟用**此技能——只要您正在處理網頁 UI（表單、表格、按鈕、樣式）即會觸發。也可手動呼叫：
-
-- Plugin 安裝：`/taiwan-freego-a11y:taiwan-freego-a11y`
-- 方式 B（資料夾複製）：`/taiwan-freego-a11y`
-
----
-
-## 儲存庫結構
-
-```text
-taiwan-freego-a11y-skill/
-├── .claude-plugin/
-│   └── marketplace.json                 # marketplace 目錄（方式 A）
-├── plugins/
-│   └── taiwan-freego-a11y/
-│       ├── .claude-plugin/
-│       │   └── plugin.json              # plugin 設定檔
-│       ├── skills/
-│       │   └── taiwan-freego-a11y/
-│       │       └── SKILL.md             # Skill 本體
-│       └── README.md
-├── README.md
-└── LICENSE
-```
-
-## 授權
-
-MIT — 詳見 [LICENSE](LICENSE)。
-
----
-
-# English
-
-A [Claude Code](https://code.claude.com) **skill** that makes Claude apply Taiwan's
-**《網站無障礙規範 2.0》**（≡ **WCAG 2.0 AA**）accessibility patterns — the rules the
-government **Freego** scanner checks — whenever it writes, edits, or reviews web UI.
-
-It enforces, by default:
-
-- **Relative `font-size`** (rem/em/%/named, never px) — Freego `CS2140401C`
-- **Labelled form controls** (`<label for>`+`id`, or `aria-label`) — Freego `HM1130104C`
-- **`<fieldset>` first child must be `<legend>`** (`aria-label` alone doesn't satisfy it) — Freego `HM1130103C`
-- **Table header `scope`** + `<caption>` (empty corner = `<td>`) — Freego `HM1130101C`
-- **AA colour contrast ≥ 4.5:1** (e.g. avoid Tailwind `gray-400` for muted text)
-- **Heading hierarchy** (one `<h1>`, no skipped levels, visual titles marked up as real `<h1>`–`<h6>`) — WCAG 2.0 AA
-- ARIA patterns: `role="alert"` errors, `aria-hidden` decor, `aria-pressed` /
-  `aria-expanded`, `inert` off-canvas, `lang` + zoomable viewport
-
-Full rules: [`plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md`](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md).
-
----
-
-## Install — Option A: as a plugin (recommended, auto-updates)
-
-In Claude Code, add this repo as a marketplace, then install the plugin:
+在 Claude Code 中加入 marketplace，再安裝 plugin：
 
 ```text
 /plugin marketplace add happyloa/taiwan-freego-a11y-skill
 /plugin install taiwan-freego-a11y@happyloa-skills
 ```
 
-(Replace `happyloa/taiwan-freego-a11y-skill` with your `owner/repo` if you fork it.)
+已安裝者可在終端機更新：
 
-Update later with:
-
-```text
-/plugin marketplace update
-/plugin update taiwan-freego-a11y@happyloa-skills
+```bash
+claude plugin marketplace update happyloa-skills
+claude plugin update taiwan-freego-a11y@happyloa-skills
 ```
 
-## Install — Option B: copy the skill folder (simplest, no plugin)
+也可複製**完整 Skill 資料夾**，包含 references 與 scripts：
 
 ```bash
 git clone https://github.com/happyloa/taiwan-freego-a11y-skill.git
-# personal (all projects):
+mkdir -p ~/.claude/skills
 cp -r taiwan-freego-a11y-skill/plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y ~/.claude/skills/
-# or project-only: cp -r ... <your-project>/.claude/skills/
 ```
 
-## Usage
+單一專案可改放 `<project>/.claude/skills/`。Fork 使用者請將 marketplace 來源改成自己的 `owner/repo`。
 
-Claude **auto-invokes** the skill based on its `description` whenever you work on web UI
-(forms, tables, buttons, styling). You can also call it explicitly:
+## 使用
 
-- Plugin install: `/taiwan-freego-a11y:taiwan-freego-a11y`
-- Folder copy (Option B): `/taiwan-freego-a11y`
+Claude 可依 description 選用此 Skill，也可明確呼叫：
 
----
+- Plugin：`/taiwan-freego-a11y:taiwan-freego-a11y`
+- 複製資料夾：`/taiwan-freego-a11y`
 
-## Repository layout
+例如：「依台灣 115.11 AA 檢查這個結帳流程，修正問題並列出還需要人工驗證的項目。」
 
-```text
-taiwan-freego-a11y-skill/
-├── .claude-plugin/
-│   └── marketplace.json                 # marketplace catalog (Option A)
-├── plugins/
-│   └── taiwan-freego-a11y/
-│       ├── .claude-plugin/
-│       │   └── plugin.json              # plugin manifest
-│       ├── skills/
-│       │   └── taiwan-freego-a11y/
-│       │       └── SKILL.md             # the skill itself
-│       └── README.md
-├── README.md
-└── LICENSE
+產生完整 AA 待檢清單（需要 Python 3，僅使用標準函式庫）：
+
+```bash
+python plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/scripts/audit_checklist.py --level AA > a11y-audit.md
 ```
 
-## License
+可使用 `--level A`／`AAA`、`--format json`，或 `--report freego-report.html` 辨識報告代碼。**這個工具產生待檢清單，不會掃描網站，也不會由代碼出現與否推斷通過。**
 
-MIT — see [LICENSE](LICENSE).
+## 內容與驗證
+
+- [SKILL.md](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/SKILL.md)：核心開發與稽核流程。
+- [完整成功準則](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/criteria-checklist.md)：各等級檢查方法。
+- [C 碼修正指引](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/machine-checks.md)及 [C／E 完整清單](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/coverage.json)。
+- [人工驗證與報告](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/verification-and-reporting.md)：測試範圍、證據與完成條件。
+- [來源與版本](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/sources-and-versions.md)：官方資料、取得方式及舊版差異。
+
+在儲存庫根目錄執行：
+
+```bash
+python plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/scripts/audit_checklist.py --validate
+python -m unittest discover -s tests -v
+```
+
+## English
+
+A Claude Code skill for Taiwan **網站無障礙規範 (115.11) / WCAG 2.2**, targeting **AA by default**. Version **2.0.0** includes all **86 active criteria**, **28 C codes**, and **216 E codes**, with official appendix messages and source pages. Default AA covers **55 criteria, 23 C codes, and 161 E codes** cumulatively. Deleted 4.1.1 is retained only as a historical entry.
+
+The revision was published on May 29, 2026; revised certification starts November 30, 2026. The skill distinguishes normative coverage from a specific Freego version's runtime behavior. It includes the new focus, dragging, target-size, consistent-help, redundant-entry, and accessible-authentication requirements, plus stricter AAA checks.
+
+Install using the marketplace commands above, or copy the entire skill directory, including its references and scripts. Invoke `/taiwan-freego-a11y:taiwan-freego-a11y` for the plugin or `/taiwan-freego-a11y` for a folder installation. Use the Python helper to generate a pending worksheet or recognize report codes; it does not scan a website or infer pass results.
+
+Assess complete pages and processes. Record Pass / Fail / Pending / Not applicable with evidence. Keyboard, screen-reader, visual, media, and authentication checks still require actual testing; the skill does not guarantee government certification. See [sources and version notes](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/sources-and-versions.md) for provenance and migration details.
+
+## 授權 / License
+
+MIT — see [LICENSE](LICENSE). Official standard excerpts are attributed to MODA; the MIT license applies to this repository's original implementation and guidance.
