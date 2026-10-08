@@ -1,14 +1,27 @@
 {
   "name": "happyloa-skills",
   "owner": {
-    "name": "happyloa"
+    "name": "happyloa",
+    "url": "https://github.com/happyloa"
   },
-  "description": "Reusable Claude Code skills",
+  "description": "台灣網站無障礙開發與 Freego 稽核工具",
   "plugins": [
     {
       "name": "taiwan-freego-a11y",
       "source": "./plugins/taiwan-freego-a11y",
-      "description": "Taiwan 115.11 / WCAG 2.2 accessibility skill: default AA, full A/AA/AAA criteria and official Freego C/E-code inventory"
+      "description": "台灣115.11／WCAG 2.2 無障礙 Skill：開發、Freego 報告修正、完整 A/AA/AAA 清單及人工驗證流程。",
+      "version": "2.1.0",
+      "homepage": "https://github.com/happyloa/taiwan-freego-a11y-skill#readme",
+      "repository": "https://github.com/happyloa/taiwan-freego-a11y-skill",
+      "license": "MIT",
+      "keywords": [
+        "accessibility",
+        "a11y",
+        "freego",
+        "taiwan",
+        "wcag-2.2",
+        "claude-code"
+      ]
     }
   ]
 }

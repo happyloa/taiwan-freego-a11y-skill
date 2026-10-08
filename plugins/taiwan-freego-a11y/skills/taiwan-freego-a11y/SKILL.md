@@ -14,6 +14,14 @@ description: >-
 Target **《網站無障礙規範 (115.11)》 AA** unless the user specifies A or AAA.
 Apply the rules while coding; do not wait for a report.
 
+Act on the user's request: for development or remediation, edit the actual project
+files and verify the result; do not stop at an advice list. For an audit-only
+request, leave source unchanged and provide evidence plus concrete fixes. Use the
+request supplied after the slash command to select pages, components, or a report.
+Resolve bundled resources relative to this skill directory; never create a
+`references/` or `scripts/` directory in the user's project to compensate for a
+missing installation. Confirm the installation instead.
+
 The revised standard was published on 2026-05-29 and takes effect for certification
 on **2026-11-30**. Use it now for new work. Do not describe it as already in effect
 before that date. Treat Freego as one source of evidence, not a complete accessibility
@@ -33,11 +41,11 @@ certification.
 5. Read [verification-and-reporting.md](references/verification-and-reporting.md)
    before reporting results.
 
-Find a code with `rg -n 'HM1130105C' <skill-dir>/references/coverage.json`.
+Find a code with `rg -n 'HM1130105C' "${CLAUDE_SKILL_DIR}/references/coverage.json"`.
 Generate the complete AA worksheet with:
 
 ```bash
-python <skill-dir>/scripts/audit_checklist.py --level AA > a11y-audit.md
+python "${CLAUDE_SKILL_DIR}/scripts/audit_checklist.py" --level AA > a11y-audit.md
 ```
 
 This generates **pending checks**, not a website scan. Use `--format json` for

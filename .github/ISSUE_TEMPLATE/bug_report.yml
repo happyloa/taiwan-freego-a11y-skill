@@ -1,0 +1,24 @@
+name: 安裝或使用問題 / Bug report
+description: 回報 Plugin 安裝、Skill 載入、工具或指引的問題。
+title: '[Bug] '
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: 版本與環境
+      description: Skill 版本、Claude Code 版本、作業系統；涉及 Freego 時也請列出版本。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 重現方式與實際結果
+      description: 安裝命令、使用提示、錯誤訊息或最小範例。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期結果
+    validations:
+      required: true

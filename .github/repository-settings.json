@@ -1,0 +1,23 @@
+{
+  "note": "Desired GitHub repository settings. This file documents the proposed values; GitHub does not apply it automatically.",
+  "repository": {
+    "description": "讓 Claude Code 協助開發、修正與稽核台灣無障礙網站。以115.11／WCAG 2.2為基礎，預設AA，提供完整檢測碼對照、Freego報告修正與人工驗證流程。",
+    "homepage": "https://github.com/happyloa/taiwan-freego-a11y-skill#readme",
+    "has_issues": true,
+    "has_projects": false,
+    "has_wiki": false,
+    "has_discussions": false,
+    "allow_squash_merge": true,
+    "allow_merge_commit": false,
+    "allow_rebase_merge": false,
+    "delete_branch_on_merge": true,
+    "allow_update_branch": true,
+    "squash_merge_commit_title": "PR_TITLE",
+    "squash_merge_commit_message": "PR_BODY"
+  },
+  "topics": [
+    "a11y", "accessibility", "claude-code", "claude-code-plugin",
+    "claude-code-skill", "freego", "frontend", "taiwan", "wcag",
+    "wcag22", "web-accessibility", "aria"
+  ]
+}

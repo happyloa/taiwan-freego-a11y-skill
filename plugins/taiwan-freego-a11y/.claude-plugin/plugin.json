@@ -1,9 +1,10 @@
 {
   "name": "taiwan-freego-a11y",
-  "description": "Apply Taiwan 網站無障礙規範 (115.11) / WCAG 2.2, default AA, with complete criteria and official C/E-code coverage when building or auditing web UI",
-  "version": "2.0.0",
+  "description": "協助 Claude Code 依台灣115.11／WCAG 2.2 開發與修正網頁、處理 Freego 報告並完成有證據的無障礙稽核；預設 AA。",
+  "version": "2.1.0",
   "author": {
-    "name": "happyloa"
+    "name": "happyloa",
+    "url": "https://github.com/happyloa"
   },
   "license": "MIT",
   "keywords": [
@@ -15,5 +16,7 @@
     "frontend",
     "wcag-2.2",
     "115.11"
-  ]
+  ],
+  "homepage": "https://github.com/happyloa/taiwan-freego-a11y-skill#readme",
+  "repository": "https://github.com/happyloa/taiwan-freego-a11y-skill"
 }

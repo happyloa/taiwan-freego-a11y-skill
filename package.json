@@ -1,0 +1,23 @@
+{
+  "name": "taiwan-freego-a11y-skill",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Development checks for the Taiwan Freego accessibility Claude Code skill",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "python -m unittest discover -s tests -v",
+    "test:install": "python tests/verify_install.py",
+    "test:browser": "playwright test",
+    "validate": "claude plugin validate . --strict && claude plugin validate ./plugins/taiwan-freego-a11y --strict && python plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/scripts/audit_checklist.py --validate"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "2.1.293",
+    "@fontsource/noto-sans-tc": "5.3.0",
+    "@playwright/test": "1.64.0",
+    "@sparticuz/chromium": "153.0.0",
+    "axe-core": "4.14.0"
+  }
+}

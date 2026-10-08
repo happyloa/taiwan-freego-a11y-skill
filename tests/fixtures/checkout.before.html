@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-TW">
+<head><meta charset="utf-8"><title>結帳</title>
+<style>
+body {font-size:1rem;margin:0} header{position:fixed;top:0;height:90px;background:white;width:100%;z-index:10}
+main{padding-top:100px} .tiny{width:20px;height:20px;padding:0;margin:0} .row{display:flex;gap:2px}
+:focus-visible{outline:1px solid #888} .card{border:1px solid;padding:1rem}
+</style></head>
+<body><header><a href="#help">聯絡客服</a><a href="#faq">常見問題</a></header>
+<main><h1>結帳</h1><form>
+<fieldset aria-label="配送方式"><label><input type="radio" name="delivery">宅配</label><label><input type="radio" name="delivery">超商</label></fieldset>
+<label for="address">收件地址</label><input id="address" autocomplete="off">
+<p>上一步已填帳單地址；此頁請再輸入相同地址，不能選擇沿用。</p>
+<h3>商品順序</h3><div class="card" draggable="true" tabindex="0" onkeydown="if(event.key==='ArrowUp'){this.previousElementSibling?.before(this)}">商品 A</div>
+<div class="card" draggable="true" tabindex="0">商品 B</div><p>拖曳商品調整順序；鍵盤可按方向鍵。</p>
+<div class="row"><button class="tiny" type="button" aria-label="上一件">‹</button><button class="tiny" type="button" aria-label="下一件">›</button></div>
+<label for="password">密碼</label><input id="password" type="password" onpaste="event.preventDefault()" autocomplete="off">
+<label for="otp">手機驗證碼</label><input id="otp" maxlength="6" onpaste="event.preventDefault()" autocomplete="off">
+<button>送出訂單</button></form>
+<table><tr><th id="group" colspan="2">訂單</th></tr><tr><th id="product">商品</th><th id="price">金額</th></tr><tr><td headers="product missing">商品 A</td><td headers="price">100</td></tr></table>
+<section id="help"><h2>聯絡客服</h2><a href="mailto:help@example.com">客服信箱</a></section>
+<section id="faq"><h2>常見問題</h2><p>請來信。</p></section>
+</main></body></html>

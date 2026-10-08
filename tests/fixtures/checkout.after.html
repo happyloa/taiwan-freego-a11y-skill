@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>結帳與訂單確認（操作範例）</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-padding-block: 1rem; }
+    body { margin: 0; font: 1rem/1.6 system-ui, sans-serif; color: #1f2937; background: #fff; }
+    header { padding: 1rem; border-bottom: 1px solid #4b5563; }
+    main { max-inline-size: 48rem; margin-inline: auto; padding: 1rem; }
+    nav, .row { display: flex; flex-wrap: wrap; gap: .75rem; }
+    a { color: #0645ad; text-decoration: underline; overflow-wrap: anywhere; }
+    nav a, .skip-link { display: inline-flex; align-items: center; min-block-size: max(24px, 2.75rem); padding: .35rem .5rem; }
+    #help a, #error-list a { display: inline-block; min-block-size: max(24px, 2.75rem); padding-block: .35rem; }
+    .skip-link { position: absolute; inset-inline-start: 1rem; inset-block-start: 1rem; z-index: 1; transform: translateY(-200%); background: #fff; }
+    .skip-link:focus { transform: none; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.4rem; }
+    h3, legend { font-size: 1.125rem; font-weight: 700; }
+    h1, h2, h3, p { overflow-wrap: anywhere; }
+    fieldset, .card, #review, #completion { min-inline-size: 0; margin-block: 1rem; padding: 1rem; border: 1px solid #4b5563; }
+    legend { padding-inline: .25rem; }
+    .field { margin-block: 1rem; }
+    .field > label { display: block; font-weight: 700; }
+    input, button { font: inherit; }
+    input:not([type="radio"]):not([type="checkbox"]) { display: block; inline-size: 100%; min-inline-size: 0; min-block-size: max(24px, 2.75rem); padding: .5rem; border: 2px solid #4b5563; border-radius: .25rem; color: #1f2937; background: #fff; }
+    input[readonly] { background: #f1f5f9; }
+    input[type="radio"], input[type="checkbox"] { flex: 0 0 auto; inline-size: max(24px, 1.5rem); block-size: max(24px, 1.5rem); margin: 0; accent-color: #005fcc; }
+    .choice { display: inline-flex; align-items: center; gap: .5rem; min-block-size: max(24px, 2.75rem); padding: .35rem; }
+    button { min-inline-size: max(24px, 2.75rem); min-block-size: max(24px, 2.75rem); padding: .5rem .75rem; border: 2px solid #4b5563; border-radius: .25rem; color: #1f2937; background: #f1f5f9; cursor: pointer; overflow-wrap: anywhere; }
+    button:hover { background: #dbeafe; }
+    button[aria-disabled="true"] { cursor: default; border-style: dashed; }
+    :focus { outline: 3px solid #005fcc; outline-offset: 3px; }
+    [id] { scroll-margin-block: 1rem; }
+    [hidden] { display: none !important; }
+    ol { padding-inline-start: 1.75rem; }
+    .card h3 { margin-block-start: 0; }
+    .card.dragging { border-style: dashed; }
+    .hint { margin-block: .5rem; }
+    .error { color: #b91c1c; font-weight: 700; }
+    #errors { padding: 1rem; border: 2px solid #b91c1c; }
+    #errors h2 { margin-block-start: 0; }
+    [aria-invalid="true"] { border-color: #b91c1c !important; }
+    #sort-status { min-block-size: 1.6em; }
+    table { inline-size: 100%; border-collapse: collapse; table-layout: fixed; margin-block: 1.5rem; }
+    caption { text-align: start; font-size: 1.125rem; font-weight: 700; padding-block: .5rem; }
+    th, td { padding: .65rem; border: 1px solid #4b5563; text-align: start; overflow-wrap: anywhere; }
+    dt { font-weight: 700; }
+    dd { margin-inline-start: 0; margin-block-end: 1rem; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main" title="跳到結帳主要內容">跳到主要內容</a>
+  <header>
+    <nav aria-label="結帳協助">
+      <a href="#help" title="前往聯絡客服資訊">聯絡客服</a>
+      <a href="#faq" title="前往結帳常見問題">常見問題</a>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <h1>結帳</h1>
+    <p>這是操作範例；密碼與手機驗證碼僅使用測試資料，確認後不會建立訂單、扣款或傳送資料。</p>
+    <noscript><p>請開啟 JavaScript，以使用此範例的地址沿用、商品排序、錯誤提示與訂單確認功能。</p></noscript>
+    <form id="checkout-form" action="#review" method="post" novalidate>
+      <p id="form-instructions">標示「必填」的欄位都需填寫。按「檢查訂單」後可以檢查並更正，再確認送出。</p>
+      <div id="errors" role="alert" tabindex="-1" hidden>
+        <h2>請修正以下欄位</h2>
+        <ul id="error-list"></ul>
+      </div>
+      <h2>配送資料</h2>
+      <fieldset>
+        <legend>配送方式（必填）</legend>
+        <div class="row">
+          <label class="choice" for="delivery-home"><input id="delivery-home" type="radio" name="delivery" value="home" required checked>宅配</label>
+          <label class="choice" for="delivery-store"><input id="delivery-store" type="radio" name="delivery" value="store" required>超商</label>
+        </div>
+      </fieldset>
+      <p>上一步已填寫的帳單地址：<span id="billing-address">臺北市中正區示範路 1 號</span>（示範資料）。</p>
+      <div id="home-fields">
+        <label class="choice" for="same-address"><input id="same-address" type="checkbox" name="sameAddress" checked>沿用上一步帳單地址</label>
+        <div class="field">
+          <label for="address">收件地址（必填）</label>
+          <input id="address" name="address" autocomplete="shipping street-address" value="臺北市中正區示範路 1 號" required readonly aria-describedby="address-hint address-error">
+          <p id="address-hint" class="hint">已沿用帳單地址。如需不同地址，取消勾選「沿用上一步帳單地址」後即可更正。</p>
+          <p id="address-error" class="error" hidden></p>
+        </div>
+      </div>
+      <div id="store-fields" hidden>
+        <div class="field">
+          <label for="store">取貨超商門市（必填）</label>
+          <input id="store" name="store" disabled aria-describedby="store-hint store-error">
+          <p id="store-hint" class="hint">請填寫超商名稱及門市，例如「範例超商中正門市」。切回宅配時會保留已填資料。</p>
+          <p id="store-error" class="error" hidden></p>
+        </div>
+      </div>
+      <section aria-labelledby="sort-heading">
+        <h2 id="sort-heading">商品順序</h2>
+        <p id="sort-instructions">可拖曳商品到另一商品的前方或後方，或直接按各商品的「上移」及「下移」按鈕。鍵盤焦點在商品卡片時，也可按上、下方向鍵排序。</p>
+        <ol id="product-list" aria-describedby="sort-instructions">
+          <li class="card" id="item-a" data-product="a" draggable="true" tabindex="0" aria-labelledby="item-a-name" aria-describedby="sort-instructions">
+            <h3 id="item-a-name">商品 A</h3>
+            <div class="row">
+              <button type="button" data-move="up" aria-disabled="true">上移商品 A</button>
+              <button type="button" data-move="down" aria-disabled="false">下移商品 A</button>
+            </div>
+          </li>
+          <li class="card" id="item-b" data-product="b" draggable="true" tabindex="0" aria-labelledby="item-b-name" aria-describedby="sort-instructions">
+            <h3 id="item-b-name">商品 B</h3>
+            <div class="row">
+              <button type="button" data-move="up" aria-disabled="false">上移商品 B</button>
+              <button type="button" data-move="down" aria-disabled="true">下移商品 B</button>
+            </div>
+          </li>
+        </ol>
+        <p id="sort-status" role="status" aria-atomic="true"></p>
+      </section>
+      <h2>會員驗證</h2>
+      <p>可使用密碼管理員、複製貼上或裝置提供的驗證碼自動填入；此範例不向驗證服務查詢。</p>
+      <div class="field">
+        <label for="password">密碼（必填）</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required aria-describedby="password-hint password-error">
+        <p id="password-hint" class="hint">請填寫測試密碼；可直接貼上。此範例僅檢查是否已填寫。</p>
+        <p id="password-error" class="error" hidden></p>
+      </div>
+      <div class="field">
+        <label for="otp">手機驗證碼（必填）</label>
+        <input id="otp" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" required aria-describedby="otp-hint otp-error">
+        <p id="otp-hint" class="hint">請填寫 6 位數字（0 至 9）；範例可用 123456，並支援貼上。</p>
+        <p id="otp-error" class="error" hidden></p>
+      </div>
+      <button type="submit">檢查訂單</button>
+    </form>
+
+    <table>
+      <caption>訂單商品明細</caption>
+      <colgroup span="2"></colgroup>
+      <thead>
+        <tr><th id="group" colspan="2" scope="colgroup">訂單</th></tr>
+        <tr><th id="product" scope="col">商品</th><th id="price" scope="col">金額（新臺幣）</th></tr>
+      </thead>
+      <tbody id="order-lines">
+        <tr data-product="a"><td headers="group product">商品 A</td><td headers="group price">100 元</td></tr>
+        <tr data-product="b"><td headers="group product">商品 B</td><td headers="group price">未提供（範例）</td></tr>
+      </tbody>
+    </table>
+
+    <section id="review" aria-labelledby="review-heading" hidden>
+      <h2 id="review-heading" tabindex="-1">檢查並確認訂單</h2>
+      <p>請確認以下配送資料與商品順序。商品 B 的金額未提供，此範例不會計算或收取訂單款項。</p>
+      <dl>
+        <dt>配送方式</dt><dd id="review-delivery"></dd>
+        <dt id="review-destination-label">收件地址</dt><dd id="review-destination"></dd>
+        <dt>商品順序</dt><dd><ol id="review-products"></ol></dd>
+      </dl>
+      <div class="row">
+        <button id="edit-order" type="button">返回更正訂單</button>
+        <button id="confirm-order" type="button">確認送出示範訂單</button>
+      </div>
+    </section>
+    <section id="completion" aria-labelledby="completion-heading" hidden>
+      <h2 id="completion-heading" tabindex="-1">示範訂單已完成</h2>
+      <p>已完成本機操作範例；沒有建立真實訂單、扣款或傳送密碼與驗證碼。</p>
+      <button id="new-example" type="button">重新操作結帳範例</button>
+    </section>
+    <p id="checkout-status" role="status" aria-atomic="true"></p>
+    <section id="help" aria-labelledby="help-heading">
+      <h2 id="help-heading">聯絡客服</h2>
+      <a href="mailto:help@example.com" title="以電子郵件聯絡客服（範例地址）">客服信箱（範例地址）</a>
+    </section>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">常見問題</h2>
+      <p>若需協助，請使用上方客服信箱；本頁的客服地址與結帳資料均為示範用途。</p>
+    </section>
+  </main>
+  <script>
+    'use strict';
+    const form = document.getElementById('checkout-form');
+    const address = document.getElementById('address');
+    const sameAddress = document.getElementById('same-address');
+    const store = document.getElementById('store');
+    const billingAddress = document.getElementById('billing-address').textContent;
+    const products = document.getElementById('product-list');
+    const sortStatus = document.getElementById('sort-status');
+    const errors = document.getElementById('errors');
+    const errorList = document.getElementById('error-list');
+    const review = document.getElementById('review');
+    const completion = document.getElementById('completion');
+    const checkoutStatus = document.getElementById('checkout-status');
+    const homeDelivery = () => document.getElementById('delivery-home').checked;
+    let customAddress = '';
+    let draggedCard = null;
+
+    function setAddressMode() {
+      address.readOnly = sameAddress.checked;
+      if (sameAddress.checked) {
+        customAddress = address.value;
+        address.value = billingAddress;
+      } else {
+        address.value = customAddress || billingAddress;
+      }
+      document.getElementById('address-hint').textContent = sameAddress.checked
+        ? '已沿用帳單地址。如需不同地址，取消勾選「沿用上一步帳單地址」後即可更正。'
+        : '請填寫收件地址；可重新勾選「沿用上一步帳單地址」以使用已提供的資料。';
+      clearErrors();
+    }
+    sameAddress.addEventListener('change', setAddressMode);
+    form.querySelectorAll('input[name="delivery"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const home = homeDelivery();
+        document.getElementById('home-fields').hidden = !home;
+        document.getElementById('store-fields').hidden = home;
+        address.disabled = !home;
+        address.required = home;
+        store.disabled = home;
+        store.required = !home;
+        clearErrors();
+      });
+    });
+
+    function updateProductOrder() {
+      const cards = [...products.children];
+      cards.forEach((card, index) => {
+        card.querySelector('[data-move="up"]').setAttribute('aria-disabled', String(index === 0));
+        card.querySelector('[data-move="down"]').setAttribute('aria-disabled', String(index === cards.length - 1));
+        const row = document.querySelector('#order-lines tr[data-product="' + card.dataset.product + '"]');
+        document.getElementById('order-lines').append(row);
+      });
+    }
+    function announceOrder(card) {
+      const position = [...products.children].indexOf(card) + 1;
+      sortStatus.textContent = card.querySelector('h3').textContent + ' 位於第 ' + position + ' 位。現在順序：'
+        + [...products.children].map(item => item.querySelector('h3').textContent).join('、') + '。';
+    }
+    function moveProduct(card, direction, focusTarget) {
+      const neighbor = direction === 'up' ? card.previousElementSibling : card.nextElementSibling;
+      if (neighbor) {
+        if (direction === 'up') neighbor.before(card);
+        else neighbor.after(card);
+        updateProductOrder();
+      }
+      focusTarget.focus();
+      announceOrder(card);
+    }
+    products.addEventListener('click', event => {
+      const button = event.target.closest('button[data-move]');
+      if (button) moveProduct(button.closest('.card'), button.dataset.move, button);
+    });
+    products.addEventListener('keydown', event => {
+      const card = event.target.closest('.card');
+      if (card && event.target === card && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
+        event.preventDefault();
+        moveProduct(card, event.key === 'ArrowUp' ? 'up' : 'down', card);
+      }
+    });
+    products.addEventListener('dragstart', event => {
+      // Buttons retain their own pointer actions; only the card itself is dragged.
+      if (event.target.closest('button')) { event.preventDefault(); return; }
+      draggedCard = event.target.closest('.card');
+      if (!draggedCard) return;
+      event.dataTransfer.setData('text/plain', draggedCard.id);
+      event.dataTransfer.effectAllowed = 'move';
+      draggedCard.classList.add('dragging');
+    });
+    products.addEventListener('dragover', event => {
+      if (draggedCard && event.target.closest('.card')) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+      }
+    });
+    products.addEventListener('drop', event => {
+      const target = event.target.closest('.card');
+      if (!draggedCard || !target || target === draggedCard) return;
+      event.preventDefault();
+      const bounds = target.getBoundingClientRect();
+      if (event.clientY < bounds.top + bounds.height / 2) target.before(draggedCard);
+      else target.after(draggedCard);
+      updateProductOrder();
+      draggedCard.focus();
+      announceOrder(draggedCard);
+    });
+    products.addEventListener('dragend', () => {
+      if (draggedCard) draggedCard.classList.remove('dragging');
+      draggedCard = null;
+    });
+
+    function clearErrors() {
+      errorList.replaceChildren();
+      errors.hidden = true;
+      form.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute('aria-invalid'));
+      form.querySelectorAll('.error').forEach(message => { message.hidden = true; message.textContent = ''; });
+    }
+    function fieldError(field, message) {
+      field.setAttribute('aria-invalid', 'true');
+      const text = document.getElementById(field.id + '-error');
+      text.hidden = false;
+      text.textContent = message;
+      const item = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = '#' + field.id;
+      link.title = '前往並更正' + field.labels[0].textContent;
+      link.textContent = message;
+      link.addEventListener('click', event => { event.preventDefault(); field.focus(); });
+      item.append(link);
+      errorList.append(item);
+    }
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      clearErrors();
+      const destination = homeDelivery() ? address : store;
+      if (!destination.value.trim()) fieldError(destination, homeDelivery()
+        ? '請填寫收件地址，或勾選「沿用上一步帳單地址」。'
+        : '請填寫取貨超商名稱及門市，例如「範例超商中正門市」。');
+      const password = document.getElementById('password');
+      const otp = document.getElementById('otp');
+      if (!password.value) fieldError(password, '請填寫密碼；可使用密碼管理員或直接貼上測試密碼。');
+      if (!/^[0-9]{6}$/.test(otp.value)) fieldError(otp, '手機驗證碼需為 6 位數字（0 至 9），例如 123456；可直接貼上。');
+      if (errorList.children.length) {
+        errors.hidden = false;
+        errors.focus();
+        return;
+      }
+      document.getElementById('review-delivery').textContent = homeDelivery() ? '宅配' : '超商';
+      document.getElementById('review-destination-label').textContent = homeDelivery() ? '收件地址' : '取貨超商門市';
+      document.getElementById('review-destination').textContent = destination.value;
+      const list = document.getElementById('review-products');
+      list.replaceChildren();
+      [...products.children].forEach(card => {
+        const item = document.createElement('li');
+        item.textContent = card.querySelector('h3').textContent;
+        list.append(item);
+      });
+      form.hidden = true;
+      review.hidden = false;
+      document.title = '檢查並確認訂單（操作範例）';
+      document.getElementById('review-heading').focus();
+    });
+    document.getElementById('edit-order').addEventListener('click', () => {
+      review.hidden = true;
+      form.hidden = false;
+      document.title = '結帳與訂單確認（操作範例）';
+      form.querySelector('button[type="submit"]').focus();
+    });
+    document.getElementById('confirm-order').addEventListener('click', () => {
+      review.hidden = true;
+      completion.hidden = false;
+      document.getElementById('password').value = '';
+      document.getElementById('otp').value = '';
+      document.title = '示範訂單已完成';
+      document.getElementById('completion-heading').focus();
+      checkoutStatus.textContent = '示範訂單已完成，未建立真實訂單或扣款。';
+    });
+    document.getElementById('new-example').addEventListener('click', () => {
+      completion.hidden = true;
+      form.hidden = false;
+      checkoutStatus.textContent = '';
+      document.title = '結帳與訂單確認（操作範例）';
+      document.getElementById('delivery-home').focus();
+    });
+    document.querySelector('.skip-link').addEventListener('click', () => document.getElementById('main').focus());
+  </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # taiwan-freego-a11y（plugin）
 
-Claude Code Plugin，封裝 **taiwan-freego-a11y 2.0.0** Skill。
+Claude Code Plugin，封裝 **taiwan-freego-a11y 2.1.0** Skill。
 
 套用台灣 **《網站無障礙規範 (115.11)》／WCAG 2.2**，預設 **AA**。完整內容包含 86 項有效成功準則、28 個 C 碼、216 個 E 碼；AA 累計範圍為 55 項準則、23 個 C 碼、161 個 E 碼。
 
@@ -13,6 +13,6 @@ Claude Code Plugin，封裝 **taiwan-freego-a11y 2.0.0** Skill。
 
 ## English
 
-A Claude Code plugin bundling **taiwan-freego-a11y 2.0.0**, targeting Taiwan **115.11 / WCAG 2.2 AA** by default. It includes the full A/AA/AAA inventory, implementation guidance, and an evidence-based manual audit workflow. Revised certification starts November 30, 2026. Normative coverage does not mean all checks run automatically or that a website is certified.
+A Claude Code plugin bundling **taiwan-freego-a11y 2.1.0**, targeting Taiwan **115.11 / WCAG 2.2 AA** by default. It includes the full A/AA/AAA inventory, implementation guidance, and an evidence-based manual audit workflow. Revised certification starts November 30, 2026. Normative coverage does not mean all checks run automatically or that a website is certified.
 
 See the links above for the skill, inventory, provenance, installation, and usage.

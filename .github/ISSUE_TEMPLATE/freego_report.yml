@@ -1,0 +1,25 @@
+name: Freego 對應或規範問題
+description: 回報檢測碼、指引、版本對應或遺漏項目。
+title: '[Freego] '
+body:
+  - type: input
+    id: edition
+    attributes:
+      label: 規範、等級與工具版本
+      placeholder: 115.11 / AA / Freego版本 / Skill版本
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: 檢測碼與完整訊息
+      description: 附上相關元素、頁面狀態與最小可重現 HTML/CSS。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已測試的方式、結果與官方來源
+      description: 請分別列出機器檢測與人工測試證據。
+    validations:
+      required: true
