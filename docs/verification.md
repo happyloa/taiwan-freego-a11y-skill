@@ -17,9 +17,18 @@
 字型並等待載入完成，避免把中文字型缺字方塊當成實際文字排版證據。
 
 首次 GitHub 安裝使用 README 的公開 repository 來源，成功安裝 2.0.0。
-2.1.0 另外通過本機 marketplace 的隔離安裝測試；發布後再確認公開來源的新版安裝。
+2.1.0 通過本機 marketplace 的隔離安裝測試，發布後亦從公開 GitHub 來源
+重新安裝成功，確認版本為 2.1.0、已啟用，7 個 Skill 資源與來源內容一致。
 官方 CLI 的 `plugin details` 可辨識一個 taiwan-freego-a11y Skill。
 安裝與元件檢查不需要發送模型 API 請求。
+
+更新流程也經過實測：在隔離設定中，將公開 marketplace 快取還原至
+2.0.0 發布 commit 並安裝舊版，再依 README 執行 marketplace update 與
+plugin update。結果成功更新為 2.1.0、維持啟用，7 個 Skill 資源與新版來源一致。
+
+[2.1.0 的 GitHub CI 執行紀錄](https://github.com/happyloa/taiwan-freego-a11y-skill/actions/runs/37782055753)
+已通過嚴格驗證、10 項 Python 測試、隔離安裝及 7 項瀏覽器測試，
+使用乾淨的 Ubuntu runner 與預設 Chromium 解壓流程。
 
 ## 修正範例
 
