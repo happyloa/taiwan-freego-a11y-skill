@@ -124,6 +124,7 @@ def main(argv=None):
     parser.add_argument("--level", choices=LEVELS, default="AA")
     parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
     parser.add_argument("--report", type=Path, help="UTF-8 text/HTML report for code recognition only")
+    parser.add_argument("--output", type=Path, help="Write UTF-8 output to this file instead of stdout")
     parser.add_argument("--validate", action="store_true", help="Validate the bundled catalog and exit")
     args = parser.parse_args(argv)
     try:
@@ -133,8 +134,15 @@ def main(argv=None):
             return 0
         report_text = args.report.read_text(encoding="utf-8-sig") if args.report else None
         result = worksheet(data, args.level, report_text)
-        print(json.dumps(result, ensure_ascii=False, indent=2) if args.format == "json"
-              else markdown(result), end="\n" if args.format == "json" else "")
+        text = (json.dumps(result, ensure_ascii=False, indent=2) + "\n" if args.format == "json"
+                else markdown(result))
+        if args.output:
+            args.output.write_text(text, encoding="utf-8", newline="\n")
+        else:
+            # Keep redirected output UTF-8 when the console locale is not (e.g. cp950).
+            if hasattr(sys.stdout, "reconfigure"):
+                sys.stdout.reconfigure(encoding="utf-8")
+            sys.stdout.write(text)
         return 0
     except (ValueError, OSError, KeyError, TypeError, IndexError) as exc:
         print(f"Cannot generate checklist: {exc}", file=sys.stderr)

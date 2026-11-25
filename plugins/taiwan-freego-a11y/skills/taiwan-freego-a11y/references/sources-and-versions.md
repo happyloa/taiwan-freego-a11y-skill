@@ -14,17 +14,20 @@ Use the Taiwan document for Taiwan-specific requirements and identifiers. Use W3
 for supporting explanations and implementation techniques. Do not replace Taiwan's
 annex with an axe rule list or a generic WCAG checklist.
 
-| Source | Purpose |
-| --- | --- |
-| [MODA legal record, GL000192](https://law.moda.gov.tw/LawContent.aspx?id=GL000192) | 2026-05-29 publication, order 11540006711, effective 2026-11-30 |
-| [Official revised PDF](https://law.moda.gov.tw/Download.ashx?FileID=11455&id=GL000192&type=LAW) | 115 May standard and Appendix 1 C/E tables |
-| [MODA download page](https://accessibility.moda.gov.tw/Download/Detail/2783?Category=36) | Revised document and publication order |
-| [Certification transition announcement](https://accessibility.moda.gov.tw/News/Detail/5608?Category=43) | 115.11 certification starts 2026-11-30 |
-| [WCAG 2.2](https://www.w3.org/TR/WCAG22/) | International success criteria, exceptions, conformance, and terminology |
-| [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) | Component keyboard and focus implementation guidance |
-| [Freego release page](https://accessibility.moda.gov.tw/Download/Detail/2763?Category=70) | Tool version and historical operational changes |
+| Source                                                                                                  | Purpose                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [MODA legal record, GL000192](https://law.moda.gov.tw/LawContent.aspx?id=GL000192)                      | 2026-05-29 publication, order 11540006711, effective 2026-11-30                                     |
+| [Official revised PDF](https://law.moda.gov.tw/Download.ashx?FileID=11455&id=GL000192&type=LAW)         | 115 May standard and Appendix 1 C/E tables                                                          |
+| [MODA download page](https://accessibility.moda.gov.tw/Download/Detail/2783?Category=36)                | Revised document and publication order                                                              |
+| [Certification transition announcement](https://accessibility.moda.gov.tw/News/Detail/5608?Category=43) | 115.11 certification starts 2026-11-30; 110.07 applications stop the same day                       |
+| [WCAG 2.2](https://www.w3.org/TR/WCAG22/)                                                               | W3C Recommendation (2024-12-12 edition): success criteria, exceptions, conformance, and terminology |
+| [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)                                        | Component keyboard and focus implementation guidance                                                |
+| [Freego release page](https://accessibility.moda.gov.tw/Download/Detail/2763?Category=70)               | Tool version and historical operational changes                                                     |
 
-Verified on **2026-10-08**. The official download endpoints returned content types
+The appendix inventory was verified on **2026-10-08**. On **2026-11-25** the legal
+record, the download entry (last updated 2026-06-08), the announcement, and the
+Freego page were checked again: the standard, its order number, and its dates are
+unchanged. The official download endpoints returned content types
 unsupported by the retrieval service. Read the published 115 May government PDF
 through [this public mirror](https://github.com/HSU-YU-MING/ramp-a11y/blob/main/docs/tw-web-accessibility-spec-115.pdf),
 not through the mirror project's interpretation of it. Its Git blob SHA is
@@ -45,10 +48,10 @@ leaving **86 active criteria**. Retain the deleted entry for migration bookkeepi
 but never count it as an active requirement.
 
 | Selected level | Active criteria, cumulative | C codes, cumulative | E codes, cumulative |
-| --- | ---: | ---: | ---: |
-| A | 31 | 21 | 103 |
-| AA (default) | 55 | 23 | 161 |
-| AAA | 86 | 28 | 216 |
+| -------------- | --------------------------: | ------------------: | ------------------: |
+| A              |                          31 |                  21 |                 103 |
+| AA (default)   |                          55 |                  23 |                 161 |
+| AAA            |                          86 |                  28 |                 216 |
 
 Use all lower-level requirements when targeting AA or AAA. The inventory contains
 all 244 appendix codes, including techniques and common failures. The code count is
@@ -70,13 +73,13 @@ a criterion passed solely because one associated technique was used.
 
 Use the revised appendix to interpret **115.11** codes:
 
-| Code | Revised meaning |
-| --- | --- |
-| HM1130101C | Table scope associations |
-| HM1130102C | Table id/headers associations |
-| HM1130103C | Select option grouping |
+| Code       | Revised meaning                   |
+| ---------- | --------------------------------- |
+| HM1130101C | Table scope associations          |
+| HM1130102C | Table id/headers associations     |
+| HM1130103C | Select option grouping            |
 | HM1130104C | Visible form-control labels/title |
-| HM1130105C | Fieldset/legend grouping |
+| HM1130105C | Fieldset/legend grouping          |
 
 The former skill called HM1130103C a legend check. This is incorrect for 115.11.
 The [110.07 web index](https://accessibility.moda.gov.tw/Accessible/Guide/68) and its
@@ -99,10 +102,16 @@ The nine newly numbered criteria are 2.4.11–2.4.13, 2.5.7–2.5.8, 3.2.6, and
 
 ## Freego compatibility
 
-As of verification, the official release page announces **Freego Dec 19 2025** for
-110.07. Do not invent a new Freego version or claim that its older report verifies
-115.11. Before a certification run, check the official download page for the edition
-accepted for the target application date and record the actual tool version.
+As of **2026-11-25**, the official download area lists only **Freego Dec 19 2025**,
+labelled for 110.07 (installers repackaged on 2026-10-14 with the same version). No
+115.11 Freego had been published. From **2026-11-30**, MODA no longer accepts 110.07
+badge applications; badges issued on or before 2026-11-29 remain valid for three
+years. A 110.07 report therefore cannot support a new application from that date
+and never verifies 115.11.
+
+Do not invent a Freego version. Before a certification run, check the
+[download area](https://accessibility.moda.gov.tw/Download) for the edition accepted
+on the application date and record the actual tool version.
 
 The historical release notes suspended HM1110103C and excluded some aria-hidden
 elements from machine inspection. The **115.11 annex nevertheless lists HM1110103C**.

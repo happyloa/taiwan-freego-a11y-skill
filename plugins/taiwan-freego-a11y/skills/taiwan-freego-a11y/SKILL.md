@@ -22,10 +22,13 @@ Resolve bundled resources relative to this skill directory; never create a
 `references/` or `scripts/` directory in the user's project to compensate for a
 missing installation. Confirm the installation instead.
 
-The revised standard was published on 2026-05-29 and takes effect for certification
-on **2026-11-30**. Use it now for new work. Do not describe it as already in effect
-before that date. Treat Freego as one source of evidence, not a complete accessibility
-certification.
+The revised standard was published on 2026-05-29. Certification under it starts on
+**2026-11-30**, when MODA stops accepting 110.07 applications; badges issued through
+2026-11-29 stay valid for three years. Use 115.11 now for new work, and do not
+describe it as in effect before that date. As of 2026-11-25 the only official Freego
+release (Dec 19 2025) targets 110.07; check the download area for a newer edition
+before relying on a report. Treat Freego as one source of evidence, not a complete
+accessibility certification.
 
 ## Load the complete scope
 
@@ -45,9 +48,10 @@ Find a code with `rg -n 'HM1130105C' "${CLAUDE_SKILL_DIR}/references/coverage.js
 Generate the complete AA worksheet with:
 
 ```bash
-python "${CLAUDE_SKILL_DIR}/scripts/audit_checklist.py" --level AA > a11y-audit.md
+python "${CLAUDE_SKILL_DIR}/scripts/audit_checklist.py" --level AA --output a11y-audit.md
 ```
 
+Use `python3` or `py` where `python` is unavailable. The output is UTF-8.
 This generates **pending checks**, not a website scan. Use `--format json` for
 structured evidence or `--report freego-report.html` to list known and unknown
 codes in an exported text/HTML report. Never treat code recognition as a pass.
@@ -162,17 +166,17 @@ HM1130103C. For an older report, inspect its version and full message first.
 
 ### New 115.11 requirements
 
-| Criterion | Level | Implementation and verification |
-| --- | --- | --- |
-| 2.4.11 | AA | Ensure author-created sticky headers, cookie banners, footers, and dialogs do not **fully** cover the focused component. Tab through them at zoom and small viewports. |
-| 2.4.12 | AAA | Ensure **no part** of the focused component is obscured; distinguish this stricter requirement from AA. |
-| 2.4.13 | AAA | Provide a focus indicator with area at least that of a 2 CSS px perimeter and 3:1 focused/unfocused contrast at the same pixels, subject to the stated exceptions. |
-| 2.5.7 | AA | Supply a single-pointer alternative to dragging, such as click-select/click-place or move buttons. Keyboard support alone does not satisfy this pointer requirement. |
-| 2.5.8 | AA | Provide 24×24 CSS px pointer targets or meet a documented exception; check the 24px-diameter circle spacing rule for undersized targets. |
-| 3.2.6 | A | Keep repeated help mechanisms in consistent relative order across pages; do not invent a requirement to add a help mechanism everywhere. |
-| 3.3.7 | A | Auto-fill or let users select information already supplied within the same process, subject to essential/security/invalid-data exceptions. |
-| 3.3.8 | AA | Avoid unsupported cognitive tests at every authentication step; allow password managers, copy/paste, and assisted code entry, or provide a qualifying alternative. Assess CAPTCHA and MFA too. |
-| 3.3.9 | AAA | Apply the stricter authentication requirement; object recognition/personal-content exceptions from AA do not apply. |
+| Criterion | Level | Implementation and verification                                                                                                                                                                |
+| --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.4.11    | AA    | Ensure author-created sticky headers, cookie banners, footers, and dialogs do not **fully** cover the focused component. Tab through them at zoom and small viewports.                         |
+| 2.4.12    | AAA   | Ensure **no part** of the focused component is obscured; distinguish this stricter requirement from AA.                                                                                        |
+| 2.4.13    | AAA   | Provide a focus indicator with area at least that of a 2 CSS px perimeter and 3:1 focused/unfocused contrast at the same pixels, subject to the stated exceptions.                             |
+| 2.5.7     | AA    | Supply a single-pointer alternative to dragging, such as click-select/click-place or move buttons. Keyboard support alone does not satisfy this pointer requirement.                           |
+| 2.5.8     | AA    | Provide 24×24 CSS px pointer targets or meet a documented exception; check the 24px-diameter circle spacing rule for undersized targets.                                                       |
+| 3.2.6     | A     | Keep repeated help mechanisms in consistent relative order across pages; do not invent a requirement to add a help mechanism everywhere.                                                       |
+| 3.3.7     | A     | Auto-fill or let users select information already supplied within the same process, subject to essential/security/invalid-data exceptions.                                                     |
+| 3.3.8     | AA    | Avoid unsupported cognitive tests at every authentication step; allow password managers, copy/paste, and assisted code entry, or provide a qualifying alternative. Assess CAPTCHA and MFA too. |
+| 3.3.9     | AAA   | Apply the stricter authentication requirement; object recognition/personal-content exceptions from AA do not apply.                                                                            |
 
 Use `scroll-padding`/`scroll-margin` where appropriate and test real focus
 behavior. Do not substitute 44×44 AAA target sizing for the AA rule, or impose

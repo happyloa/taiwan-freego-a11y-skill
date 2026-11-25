@@ -16,8 +16,18 @@
     "squash_merge_commit_message": "PR_BODY"
   },
   "topics": [
-    "a11y", "accessibility", "claude-code", "claude-code-plugin",
-    "claude-code-skill", "freego", "frontend", "taiwan", "wcag",
-    "wcag22", "web-accessibility", "aria"
+    "a11y",
+    "accessibility",
+    "claude-code",
+    "claude-code-plugin",
+    "claude-code-skill",
+    "freego",
+    "frontend",
+    "taiwan",
+    "wcag",
+    "wcag22",
+    "web-accessibility",
+    "aria",
+    "personal-project"
   ]
 }
