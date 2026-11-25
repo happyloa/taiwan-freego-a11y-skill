@@ -1,7 +1,7 @@
 {
   "name": "taiwan-freego-a11y",
   "description": "協助 Claude Code 依台灣115.11／WCAG 2.2 開發與修正網頁、處理 Freego 報告並完成有證據的無障礙稽核；預設 AA。",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "author": {
     "name": "happyloa",
     "url": "https://github.com/happyloa"

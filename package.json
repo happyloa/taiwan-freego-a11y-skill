@@ -1,6 +1,6 @@
 {
   "name": "taiwan-freego-a11y-skill",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "description": "Development checks for the Taiwan Freego accessibility Claude Code skill",
   "license": "MIT",

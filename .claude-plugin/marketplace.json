@@ -10,7 +10,7 @@
       "name": "taiwan-freego-a11y",
       "source": "./plugins/taiwan-freego-a11y",
       "description": "台灣115.11／WCAG 2.2 無障礙 Skill：開發、Freego 報告修正、完整 A/AA/AAA 清單及人工驗證流程。",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "homepage": "https://github.com/happyloa/taiwan-freego-a11y-skill#readme",
       "repository": "https://github.com/happyloa/taiwan-freego-a11y-skill",
       "license": "MIT",
