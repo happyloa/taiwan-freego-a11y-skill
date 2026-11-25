@@ -1,6 +1,10 @@
 import copy
 import importlib.util
 import json
+import os
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -71,6 +75,18 @@ class AuditChecklistTests(unittest.TestCase):
         rendered = audit.markdown(result)
         self.assertIn('&lt;input&gt; \\| literal pipe', rendered)
         self.assertEqual(55 + 23 + 161, rendered.count('| Pending |'))
+
+
+    def test_output_is_utf8_for_files_and_non_utf8_consoles(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "a11y-audit.md"
+            self.assertEqual(0, audit.main(["--level", "AA", "--output", str(target)]))
+            self.assertIn("非文字內容", target.read_text(encoding="utf-8"))
+        # Simulate a Windows console (cp950) redirecting stdout to a file.
+        env = {**os.environ, "PYTHONIOENCODING": "cp950", "PYTHONUTF8": "0"}
+        result = subprocess.run([sys.executable, str(SKILL / "scripts/audit_checklist.py"), "--level", "A"],
+                                capture_output=True, env=env, check=True)
+        self.assertIn("非文字內容", result.stdout.decode("utf-8"))
 
 
 if __name__ == "__main__":
