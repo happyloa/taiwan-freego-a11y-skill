@@ -6,7 +6,6 @@
 - Coverage and level selection
 - Changes from the former skill
 - Freego compatibility
-- Updating the inventory
 
 ## Authority and provenance
 
@@ -81,7 +80,11 @@ Use the revised appendix to interpret **115.11** codes:
 | HM1130104C | Visible form-control labels/title |
 | HM1130105C | Fieldset/legend grouping          |
 
-The former skill called HM1130103C a legend check. This is incorrect for 115.11.
+The former skill, written for 110.07, called HM1130103C a legend check. That still
+matches 110.07 Freego output: in the skill maintainers' test scan on 2026-11-25,
+Freego Dec 19 2025 reported a fieldset whose first child was not a legend as
+HM1130103C, with a message equivalent to the 115.11 HM1130105C entry. Under 115.11,
+HM1130103C means select option grouping.
 The [110.07 web index](https://accessibility.moda.gov.tw/Accessible/Guide/68) and its
 linked detail pages also differ in some numbering. Preserve the report's **version,
 code, full message, URL, and element** when handling an older report; never silently
@@ -119,14 +122,13 @@ Keep its normative coverage; independently check meaningful symbols and emoji an
 document the actual runtime result. Never extrapolate an old tool suspension to a
 removal from the new standard.
 
+In that test Freego did not report an unlabelled select, a `div` used as a button,
+low text contrast, blocked paste on a password field, a text CAPTCHA without an
+alternative, the 16px size of an icon button, or a fixed banner that can cover focus.
+A Freego pass says nothing about these; check them manually. These observations come
+from the maintainers' test pages, not the user's site: never present them as a scan
+you ran.
+
 If the selected scanner cannot assess a new criterion or state, perform the manual
 check and leave missing machine evidence pending. Never use a scanner limitation
 to declare the requirement not applicable.
-
-## Updating the inventory
-
-When official documents or tool versions change, re-read the publication record,
-the full appendix, and the tool release notes. Keep the source edition and date with
-the inventory. Validate counts, identifier-to-criterion relationships, changed
-messages, and the criterion checklist together; then run the repository checks.
-Do not update only a version string or reuse a third-party rule inventory as authority.

@@ -9,200 +9,182 @@ description: >-
   media, and authentication checks.
 ---
 
-# Taiwan Web Accessibility — 115.11 / WCAG 2.2
+# Taiwan Web Accessibility: 115.11 / WCAG 2.2
 
-Target **《網站無障礙規範 (115.11)》 AA** unless the user specifies A or AAA.
-Apply the rules while coding; do not wait for a report.
+Target **《網站無障礙規範 (115.11)》 AA** unless the user names A or AAA. Apply the
+rules while coding; do not wait for a report.
 
-Act on the user's request: for development or remediation, edit the actual project
-files and verify the result; do not stop at an advice list. For an audit-only
-request, leave source unchanged and provide evidence plus concrete fixes. Use the
-request supplied after the slash command to select pages, components, or a report.
-Resolve bundled resources relative to this skill directory; never create a
-`references/` or `scripts/` directory in the user's project to compensate for a
-missing installation. Confirm the installation instead.
+For development or remediation, edit the project files and verify the result. For an
+audit-only request, leave the source unchanged and report evidence with concrete
+fixes. Use the text after the slash command to pick pages, components, or a report.
+Resolve bundled files relative to this skill directory. If they are missing, report a
+broken installation; never create `references/` or `scripts/` in the user's project.
 
-The revised standard was published on 2026-05-29. Certification under it starts on
-**2026-11-30**, when MODA stops accepting 110.07 applications; badges issued through
-2026-11-29 stay valid for three years. Use 115.11 now for new work, and do not
-describe it as in effect before that date. As of 2026-11-25 the only official Freego
-release (Dec 19 2025) targets 110.07; check the download area for a newer edition
-before relying on a report. Treat Freego as one source of evidence, not a complete
-accessibility certification.
+## Edition and certification dates
 
-## Load the complete scope
+- 115.11 was published on 2026-05-29. Certification under it starts on
+  **2026-11-30**, when MODA stops accepting 110.07 applications. Badges issued
+  through 2026-11-29 stay valid for three years.
+- Use 115.11 for new work now, but do not describe it as in effect before 2026-11-30.
+- As of 2026-11-25 the only official Freego release (Dec 19 2025) targets 110.07.
+  Check the download area for a newer edition before relying on a report, and never
+  invent a version.
+- Freego is one source of evidence, not a certification.
 
-1. Read [sources-and-versions.md](references/sources-and-versions.md) for authority,
-   version selection, changed codes, and the removed 4.1.1 criterion.
-2. Read [criteria-checklist.md](references/criteria-checklist.md). It covers all
-   **86 active criteria**; AA includes **31 A + 24 AA = 55**.
-3. Read [machine-checks.md](references/machine-checks.md) for all **28 C codes**.
-4. Look up every applicable **E code** in [coverage.json](references/coverage.json):
-   it includes **216 E codes**, their official messages, criterion, level, and
-   source page. Use the entire selected-level inventory for a full audit. Follow
-   each relevant message, including the documented failure conditions.
-5. Read [verification-and-reporting.md](references/verification-and-reporting.md)
-   before reporting results.
+## Load what the task needs
 
-Find a code with `rg -n 'HM1130105C' "${CLAUDE_SKILL_DIR}/references/coverage.json"`.
-Generate the complete AA worksheet with:
+The rules in this file cover most implementation work. Also read:
+
+- [sources-and-versions.md](references/sources-and-versions.md) for editions, dates,
+  Freego versions, or any code taken from a report.
+- [machine-checks.md](references/machine-checks.md) (all **28 C codes**) when fixing or
+  explaining a C code.
+- [criteria-checklist.md](references/criteria-checklist.md) (all **86 active
+  criteria**; AA covers **31 A + 24 AA = 55**) plus machine-checks.md for an audit,
+  worksheet, or full-scope review. A full audit uses the whole selected-level
+  inventory: every applicable criterion and C/E code.
+- [coverage.json](references/coverage.json) for an E code or the official wording of
+  any code: 216 E codes with message, criterion, level, and PDF page. Search it, for
+  example `rg -n 'HM1130105C' "${CLAUDE_SKILL_DIR}/references/coverage.json"`; do not
+  read the whole file.
+- [verification-and-reporting.md](references/verification-and-reporting.md) before
+  reporting test results or statuses.
+
+Generate the complete AA worksheet of **pending checks** (not a website scan):
 
 ```bash
 python "${CLAUDE_SKILL_DIR}/scripts/audit_checklist.py" --level AA --output a11y-audit.md
 ```
 
-Use `python3` or `py` where `python` is unavailable. The output is UTF-8.
-This generates **pending checks**, not a website scan. Use `--format json` for
-structured evidence or `--report freego-report.html` to list known and unknown
-codes in an exported text/HTML report. Never treat code recognition as a pass.
+Use `python3` or `py` where `python` is unavailable; the output is UTF-8. Add
+`--format json` for structured evidence or `--report freego-report.html` to list known
+and unknown codes in an exported report. Recognizing a code is never a pass.
 
 ## Workflow
 
-1. Establish the target level and the pages, routes, states, languages, downloads,
-   third-party content, and complete processes in scope. Default to 115.11 AA.
-2. Inspect shared components and rendered HTML as well as source. Include login,
-   create/edit dialogs, validation errors, empty/loading states, menus, filters,
-   SPA route changes, mobile layouts, and light/dark themes.
-3. Apply the relevant criteria and C/E messages. Mark an alternative technique
-   not applicable only with a reason and the method used instead. A list of
-   sufficient techniques does not require implementing every technique together.
-   A `FA...` code describes a failure: check whether that failure occurs.
-4. Repair shared components at their source and inspect their consuming pages.
-   Preserve intended visual design and behavior while adding semantics.
-5. Run available build/lint and automated accessibility checks, then execute the
-   relevant keyboard, screen-reader, visual, media, and process checks.
-6. Re-run the same states after fixes. Report tested evidence, failures, justified
-   exclusions, and untested checks separately. Leave unavailable tests pending.
+1. Settle the level and the pages, routes, states, languages, downloads, third-party
+   content, and complete processes in scope.
+2. Inspect shared components and rendered HTML as well as source: login, dialogs,
+   validation errors, empty/loading states, menus, filters, SPA route changes, mobile
+   layouts, and themes.
+3. Apply the relevant criteria and C/E messages. Sufficient techniques are
+   alternatives, not a list to implement together; mark one not applicable only with a
+   reason and the method used instead. An `FA...` code is a failure to check for.
+4. Repair shared components at their source, keep the intended design and behavior,
+   and inspect the pages that use them.
+5. Run available build/lint and automated checks, then the relevant keyboard,
+   screen-reader, visual, media, and process checks.
+6. Re-test the same states. Report tested evidence, failures, justified exclusions,
+   and untested checks separately; leave unavailable tests Pending.
 
-## Core implementation rules
+## Rules that are easy to get wrong
 
-### Non-text content and media — 1.1, 1.2
+### Images and media (1.1, 1.2)
 
-- Provide meaningful `alt` for informative images and image submit buttons, and
-  non-empty purpose descriptions for linked image-map areas.
-- Use `alt=""` without `title` for decorative images. Hide an icon from AT only
-  when its information is already available or it is decorative.
-- Give SVG, canvas, charts, embedded objects, and sensory experiences appropriate
-  text equivalents. Offer nearby detailed descriptions or accessible data for
-  complex diagrams; do not introduce obsolete `longdesc` as a new requirement.
-- Provide accurate transcripts, captions, and audio descriptions at the selected
-  level. Check their information and timing, not only the presence of `<track>`.
-- Provide CAPTCHA purpose and equivalent alternatives; additionally apply the
-  authentication requirements in 3.3.8/3.3.9.
+- Informative images and image buttons need meaningful `alt`; linked image-map areas
+  need a purpose. Decorative images use `alt=""` **without `title`** (HM1110106C).
+  Hide an icon from AT only when it is decorative or its information is already there.
+- Give SVG, canvas, charts, and objects text equivalents, with detailed descriptions or
+  data nearby for complex graphics. Do not introduce obsolete `longdesc`.
+- Check captions, transcripts, and audio descriptions for accuracy and timing, not
+  only the presence of `<track>`.
+- A CAPTCHA needs its purpose and an equivalent alternative; also apply 3.3.8/3.3.9.
 
-### Structure, tables, and forms — 1.3.1, 1.3.2, 3.3, 4.1.2
+### Structure, tables, and forms (1.3, 3.3, 4.1.2)
 
-- Mark genuine headings with `h1`–`h6` in meaningful nesting order. Prefer one
-  page-level `h1`; do not claim that exactly one is an independent WCAG rule.
-  A list item may contain a heading. Decide from meaning, not font weight.
-- Keep heading level configurable in reusable cards. For accordions, use
-  `<h2><button aria-expanded="false" aria-controls="panel">…</button></h2>`.
-- Use `scope="col|row|colgroup|rowgroup"` for suitable table headers. Use unique
-  `id` and explicit `headers` associations for complex tables. Do not require
-  scope when valid headers/id associations provide the relationship.
-- Give data tables a useful caption or other programmatic identification where
-  needed. Use `td` for a genuinely empty corner. Avoid tables for layout; do not
-  add header/caption semantics to an existing layout table.
-- Prefer visible `<label for>` + unique `id` for input/select/textarea. Support
-  wrapping labels, but verify exact Freego compatibility. An ARIA-only name can
-  satisfy accessible-name requirements while failing a structural scanner rule.
-  Do not promise that `aria-label` alone passes HM1130104C.
-- Group related radio/checkbox controls with `fieldset` and a non-empty
-  `legend` as the first child element. Use labelled `optgroup` for meaningful
-  select groups. Do not turn arbitrary button toolbars into fieldsets.
-- Use correct `autocomplete` tokens for user-information fields. Include visible
-  required/format instructions and preserve user input after validation errors.
-- Match accessible names to visible labels (2.5.3). Prefer native buttons/links
-  and expose custom roles, values, states, and changes correctly.
-- Keep reading and focus order meaningful; CSS visual reordering must not create
-  a conflicting sequence. Mark language changes and mixed text direction.
+- Mark real headings in meaningful nesting order. Prefer one page `h1`, but "exactly
+  one h1" is not a WCAG rule. Keep heading levels configurable in reusable cards;
+  accordions use `<h2><button aria-expanded="false" aria-controls="panel">…</button></h2>`.
+- Tables: `scope` for suitable headers (HM1130101C); unique `id` plus `headers` for
+  complex tables (HM1130102C). Valid `headers`/`id` associations do not also need
+  `scope`. Give data tables a caption where needed, use `td` for an empty corner, and
+  never add header or caption semantics to a layout table.
+- Prefer a visible `<label for>` with a unique `id`. Wrapping labels work, but check
+  Freego compatibility. An ARIA-only name can satisfy the accessible name and still
+  fail HM1130104C; never promise that `aria-label` alone passes it.
+- Group related radios/checkboxes with `fieldset` and a non-empty `legend` as its first
+  child (HM1130105C). Group meaningful select options with labelled `optgroup`
+  (HM1130103C). Do not turn button toolbars into fieldsets.
+- Use correct `autocomplete` tokens, visible required/format instructions, and keep
+  user input after validation errors. Accessible names include the visible label (2.5.3).
+- Keep reading and focus order meaningful when CSS reorders content; mark language
+  changes and mixed text direction.
 
-**115.11 code mapping:** HM1130101C = table scope; HM1130102C = table headers/id;
-HM1130103C = select/optgroup; HM1130104C = labels/title;
-HM1130105C = fieldset/legend. Never apply the old skill's legend mapping to
-HM1130103C. For an older report, inspect its version and full message first.
+**115.11 code mapping:** HM1130101C table scope; HM1130102C table headers/id;
+HM1130103C select/optgroup; HM1130104C labels/title; HM1130105C fieldset/legend.
+Reports from the current 110.07 Freego (Dec 19 2025) use **HM1130103C for
+fieldset/legend**, the check 115.11 numbers HM1130105C: fix a missing legend there,
+not optgroup. For any report, read its edition and full message before mapping a code.
 
-### Presentation — 1.4
+### Presentation (1.4)
 
-- Use relative `font-size` (rem/em/%/named) for CS2140401C, including inline
-  styles, generated CSS, imported stylesheets, and relevant third-party styles.
-  Test 200% text resizing and reflow; changing units alone does not prove either.
-  Do not assume every browser's base font is 16px or every utility token is rem.
-- Calculate actual foreground/background contrast, including transparency,
-  gradients, images, hover/focus/disabled states, and themes. AA normal text
-  requires 4.5:1; large text requires 3:1. Large means at least 18pt (24 CSS px)
-  regular or 14pt (about 18.67 CSS px) bold. Respect specified exceptions.
-- Give relevant controls, states, and graphics 3:1 non-text contrast. Do not rely
-  on color alone for errors, links, selections, or chart series.
-- Allow zoom and reflow at 320 CSS px width for vertically scrolling content, or
-  256 CSS px height for horizontally scrolling content. Confine legitimately
-  two-dimensional tables/maps to their own region.
-- Permit user text spacing without clipping or loss: line height 1.5, paragraph
-  spacing 2em, letter spacing .12em (.14em for Chinese), word spacing .16em;
-  observe the Taiwan language-specific notes.
-- Avoid images of text where real text works. Keep hover/focus popovers
-  dismissible, hoverable, and persistent under the criterion's conditions.
-- Do not lock orientation or disable browser zoom. Provide controls for
-  applicable autoplay audio and moving/updating content.
+- CS2140401C: use relative `font-size` (rem/em/%/named) in inline, generated,
+  imported, and relevant third-party CSS. Units alone do not prove 200% text resize or
+  reflow; do not assume a 16px base or that every utility token is rem.
+- Measure actual contrast, including transparency, gradients, images,
+  hover/focus/disabled states, and themes: 4.5:1 for normal text, 3:1 for large text
+  (at least 24 CSS px, or about 18.67 CSS px bold), and 3:1 for control, state, and
+  graphic information. Never rely on colour alone.
+- Reflow at 320 CSS px width (or 256 CSS px height for horizontal content); confine
+  genuinely two-dimensional tables and maps to their own region.
+- Survive user text spacing without loss: line height 1.5, paragraph spacing 2em,
+  letter spacing .12em (**.14em for Chinese**), word spacing .16em.
+- Avoid images of text. Make hover/focus popovers dismissible, hoverable, and
+  persistent. Do not lock orientation or disable zoom; give controls for autoplay audio
+  and moving or updating content.
 
-### Keyboard, navigation, and focus — 2.1–2.4
+### Keyboard, navigation, and focus (2.1–2.4)
 
-- Operate all functionality using the keyboard, with meaningful Tab/Shift+Tab,
-  Enter/Space, and component-appropriate arrow/Escape behavior; avoid traps.
-- Keep visible focus and meaningful order; avoid positive `tabindex`.
-  Offer a working skip link, landmarks, grouped `nav`, descriptive page titles,
-  understandable link purposes, and multiple ways to locate pages where required.
-- Update the document title on SPA navigation and manage focus according to the
-  new content and user action.
-- Manage dialogs/drawers through opening focus, containment when modal, dismissal,
-  and return focus. Make closed content hidden/inert as appropriate.
-  `aria-hidden` alone does not remove descendants from the tab order; never hide
-  a subtree containing the current focus.
-- Do not change context merely on focus/input without the required warning.
-  Make single-character shortcuts disableable, remappable, or focus-specific.
-- Make time limits adjustable under 2.2.1; warn and offer extension where used.
-  Pause/stop/hide applicable moving content and control auto-update frequency.
-  Test flashing thresholds; animation preferences alone do not prove compliance.
+- Operate everything by keyboard with component-appropriate keys and no traps. Keep
+  focus visible and order meaningful; avoid positive `tabindex`.
+- Provide a working skip link, landmarks, distinguishable multiple `nav` regions,
+  descriptive titles (updated on SPA navigation), clear link purpose, and multiple
+  ways to find pages where required.
+- Dialogs and drawers: set initial focus, contain it when modal, allow dismissal, and
+  return focus. Make closed content hidden or inert. `aria-hidden` does not remove
+  focusable descendants from the tab order; never hide a subtree holding focus.
+- No context change on focus or input without warning. Single-character shortcuts must
+  be disableable, remappable, or focus-only. Time limits are adjustable under 2.2.1;
+  moving and auto-updating content can be paused, stopped, or hidden. Reduced-motion
+  support alone does not prove the flash thresholds.
 
-### New 115.11 requirements
+### New in 115.11
 
-| Criterion | Level | Implementation and verification                                                                                                                                                                |
-| --------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2.4.11    | AA    | Ensure author-created sticky headers, cookie banners, footers, and dialogs do not **fully** cover the focused component. Tab through them at zoom and small viewports.                         |
-| 2.4.12    | AAA   | Ensure **no part** of the focused component is obscured; distinguish this stricter requirement from AA.                                                                                        |
-| 2.4.13    | AAA   | Provide a focus indicator with area at least that of a 2 CSS px perimeter and 3:1 focused/unfocused contrast at the same pixels, subject to the stated exceptions.                             |
-| 2.5.7     | AA    | Supply a single-pointer alternative to dragging, such as click-select/click-place or move buttons. Keyboard support alone does not satisfy this pointer requirement.                           |
-| 2.5.8     | AA    | Provide 24×24 CSS px pointer targets or meet a documented exception; check the 24px-diameter circle spacing rule for undersized targets.                                                       |
-| 3.2.6     | A     | Keep repeated help mechanisms in consistent relative order across pages; do not invent a requirement to add a help mechanism everywhere.                                                       |
-| 3.3.7     | A     | Auto-fill or let users select information already supplied within the same process, subject to essential/security/invalid-data exceptions.                                                     |
-| 3.3.8     | AA    | Avoid unsupported cognitive tests at every authentication step; allow password managers, copy/paste, and assisted code entry, or provide a qualifying alternative. Assess CAPTCHA and MFA too. |
-| 3.3.9     | AAA   | Apply the stricter authentication requirement; object recognition/personal-content exceptions from AA do not apply.                                                                            |
+| Criterion | Level | Implementation and verification                                                                                                                                                       |
+| --------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.4.11    | AA    | Author-created sticky headers, cookie banners, footers, and dialogs must not **fully** cover the focused component. Tab through them at zoom and small viewports.                     |
+| 2.4.12    | AAA   | **No part** of the focused component may be obscured; keep this stricter rule apart from AA.                                                                                          |
+| 2.4.13    | AAA   | Focus indicator area at least a 2 CSS px perimeter and 3:1 focused/unfocused contrast at the same pixels, with the stated exceptions.                                                 |
+| 2.5.7     | AA    | Give dragging a single-pointer alternative such as click-select/click-place or move buttons. Keyboard support alone does not satisfy it.                                              |
+| 2.5.8     | AA    | Targets at least 24×24 CSS px, or a documented exception; check the 24px-circle spacing rule for undersized targets.                                                                  |
+| 3.2.6     | A     | Keep repeated help mechanisms in the same relative order across pages; it does not require adding help everywhere.                                                                    |
+| 3.3.7     | A     | Auto-fill or offer information already given in the same process, apart from essential, security, or no-longer-valid exceptions.                                                      |
+| 3.3.8     | AA    | No unsupported cognitive test at any authentication step: allow password managers, copy/paste, and assisted code entry, or give a qualifying alternative. Assess CAPTCHA and MFA too. |
+| 3.3.9     | AAA   | The stricter rule: the object-recognition and personal-content exceptions do not apply.                                                                                               |
 
-Use `scroll-padding`/`scroll-margin` where appropriate and test real focus
-behavior. Do not substitute 44×44 AAA target sizing for the AA rule, or impose
-AAA focus geometry as an AA prerequisite. See the criterion checklist for exceptions.
+Use `scroll-padding`/`scroll-margin` where appropriate and test real focus behavior.
+Do not substitute 44×44 (AAA 2.5.5) for the AA target rule, or require AAA focus
+geometry for AA.
 
-### Feedback, downloads, and robust interaction
+### Feedback, downloads, and robustness
 
-- Associate error text with its field, set `aria-invalid` when invalid, and give
-  useful corrections. Provide review/confirmation/reversal for sensitive submissions.
-- Announce nonurgent status changes with `role="status"` or a suitable polite live
-  region; use `role="alert"` for urgent errors and `role="log"` for sequential
-  updates. Avoid adding redundant assertive announcements to every message.
-- Provide open download formats (ME1320200C) and verify the accessibility of the
-  document itself. A PDF extension alone is insufficient.
-- Give iframes descriptive non-empty titles and assess embedded/third-party content.
-- Treat 4.1.1 as removed in 115.11. Continue fixing duplicate IDs/broken references
-  when they break actual names, relationships, states, or behavior; attribute the
-  failure to the relevant active criterion rather than resurrecting 4.1.1.
+- Associate error text with its field, set `aria-invalid`, and suggest corrections.
+  Give review, confirmation, or reversal for sensitive submissions.
+- Announce non-urgent status with `role="status"` or another polite live region, urgent
+  errors with `role="alert"`, and sequences with `role="log"`; do not make every
+  message assertive.
+- ME1320200C: offer downloads in open formats (ODF, accessible PDF, HTML) and check the
+  document itself; a PDF extension proves nothing.
+- Give each `iframe` a descriptive non-empty `title` and assess the embedded content.
+- 4.1.1 is removed in 115.11. Still fix duplicate IDs and broken references when they
+  break names, relationships, states, or behavior, and report them under the active
+  criterion instead of reviving 4.1.1.
 
 ## Scanner and evidence boundaries
 
-Inspect authenticated and hidden states explicitly. Verify what a flagged URL
-actually serves, including redirects, trailing-slash variants, proxy errors,
-HTTP status, loaded CSS, and the rendered DOM.
-
-Do not mark missing/blocked pages or timeouts as passes. Do not add `aria-hidden`
-or exclude pages simply to suppress Freego findings. Use
+Inspect authenticated and hidden states explicitly. Check what a flagged URL actually
+serves: redirects, trailing-slash variants, proxy errors, HTTP status, loaded CSS, and
+the rendered DOM. Never mark missing or blocked pages or timeouts as passes. Never add
+`aria-hidden` or exclude pages just to silence Freego. Use
 [verification-and-reporting.md](references/verification-and-reporting.md) for the
-final evidence format and the distinction between code coverage and runtime results.
+evidence format and the difference between code coverage and runtime results.

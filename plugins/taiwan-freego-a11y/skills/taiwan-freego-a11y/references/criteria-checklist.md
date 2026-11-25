@@ -7,13 +7,12 @@
 - Understandable: 3.1–3.3
 - Robust: 4.1
 
-Use all A requirements for AA and all A/AA requirements for AAA. The document has
-87 numbered entries, including removed 4.1.1; test **86 active criteria**, or **55**
-for default AA. These are practical checks; read the official text for full
-definitions and exceptions. Record Pass / Fail / Pending / Not applicable with
-evidence. Evaluate every selected-level C/E message in `coverage.json` alongside
-these criterion checks. A technique may be an alternative; a FA code is a failure
-condition. Neither a missing dedicated code nor a tool limitation exempts a criterion.
+AA includes every A criterion; AAA includes A and AA. Of the 87 numbered entries,
+4.1.1 is removed, so test **86 active criteria**, or **55** for AA. These are
+practical checks; the official text holds the full definitions and exceptions.
+Record Pass / Fail / Pending / Not applicable with evidence, and evaluate the
+selected-level C/E messages in `coverage.json` alongside them. A missing dedicated
+code or a tool limitation never exempts a criterion.
 
 ## Perceivable
 
