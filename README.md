@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![WCAG 2.2](https://img.shields.io/badge/WCAG-2.2%20AA-166534.svg)](https://www.w3.org/TR/WCAG22/)
 
-版本 2.2.0。適用 HTML、JSX、Vue、Svelte、CSS 與既有網站審查。
+版本 2.3.0。適用 HTML、JSX、Vue、Svelte、CSS 與既有網站審查。
 
 ## 安裝
 
@@ -24,7 +24,7 @@ claude plugin install taiwan-freego-a11y --marketplace happyloa/taiwan-freego-a1
 
 較舊的 Claude Code 先執行 `claude plugin marketplace add happyloa/taiwan-freego-a11y-skill`，再執行 `claude plugin install taiwan-freego-a11y@happyloa-skills`。
 
-用 `claude plugin list` 確認 `taiwan-freego-a11y@happyloa-skills` 已啟用、版本為 2.2.0。目前的工作階段還沒載入時，執行 `/reload-plugins`。
+用 `claude plugin list` 確認 `taiwan-freego-a11y@happyloa-skills` 已啟用、版本為 2.3.0。目前的工作階段還沒載入時，執行 `/reload-plugins`。
 
 一般使用不需要 Node.js 或 npm。附帶的清單工具需要 Python 3.10 以上，沒有 Python 時 Claude 仍能使用規範與修正指引。
 
@@ -60,7 +60,7 @@ Claude 也會依任務自動選用這個 Skill，明確呼叫可以確保這次�
 
 - 115.11 標章認證自 2026-11-30 開始，同一天起不再受理 110.07 申請；2026-11-29 以前取得的標章效期仍為 3 年。
 - 截至 2026-11-25，官方只提供適用 110.07 的 Freego Dec 19 2025，還沒有 115.11 版。送驗前先到[官方下載專區](https://accessibility.moda.gov.tw/Download)確認可用版本。
-- 110.07 的掃描結果不能證明網站符合 115.11。
+- 110.07 的掃描結果不能證明網站符合 115.11。同一個代碼在兩版的意思可能不同：110.07 報告的 HM1130103C 是 fieldset 缺 legend，到 115.11 改編為 HM1130105C。
 
 來源與日期見[版本與官方來源](plugins/taiwan-freego-a11y/skills/taiwan-freego-a11y/references/sources-and-versions.md)。
 

@@ -1,15 +1,8 @@
 # Complete 115.11 C-code implementation guide
 
-## Contents
-
-- A-level checks (21)
-- Additional AA checks (2)
-- Additional AAA checks (5)
-- Interpretation boundaries
-
-Read the precise official messages in `coverage.json`. The following instructions
-are implementation guidance. Test applicability and any alternative technique;
-do not claim these prose checks reproduce the Freego binary.
+The official messages are in `coverage.json`. This table is implementation guidance:
+test applicability and alternative techniques, and do not claim it reproduces
+Freego's checks.
 
 ## A-level checks (21)
 
@@ -24,9 +17,9 @@ do not claim these prose checks reproduce the Freego binary.
 | HM1130100C | 1.3.1 | Inspect heading nesting in every state and route. Make genuine section titles headings at the correct level; keep reusable headings configurable. |
 | HM1130101C | 1.3.1 | Associate suitable row/column/group headers through scope; inspect span and grouping semantics. |
 | HM1130102C | 1.3.1 | Associate complex data cells with the correct unique header IDs through headers. Check references exist and reflect all relevant headers. |
-| HM1130103C | 1.3.1 | Group related select options using optgroup with meaningful labels. Do not invent groups when there is no meaningful grouping. |
+| HM1130103C | 1.3.1 | Group related select options using optgroup with meaningful labels. Do not invent groups when there is no meaningful grouping. A 110.07 Freego report uses this code for fieldset/legend (HM1130105C here). |
 | HM1130104C | 1.3.1 | Give visible form controls non-empty, correctly associated labels; use title only in the specified exceptional cases. Verify labels remain in rendered output and unique IDs survive loops. ARIA-only naming is not proof of this structural check. |
-| HM1130105C | 1.3.1 | Group related form controls with fieldset and a meaningful legend. Put legend first and preserve each individual control's name. |
+| HM1130105C | 1.3.1 | Group related form controls with fieldset and a meaningful legend. Put legend first and preserve each individual control's name. 110.07 Freego reports this as HM1130103C. |
 | HM1130200C | 1.3.2 | Inspect mixed RTL/LTR text. Set appropriate dir/bidi isolation or direction marks without corrupting reading order. |
 | HM1240102C | 2.4.1 | Group related navigation links in nav and distinguish multiple navigation regions. Also test the actual bypass mechanism under 2.4.1. |
 | HM1240200C | 2.4.2 | Provide a non-empty descriptive document title; update it for SPA routes and relevant state changes. |
@@ -56,14 +49,13 @@ do not claim these prose checks reproduce the Freego binary.
 
 ## Interpretation boundaries
 
-Use **23 cumulative C codes for AA**, not only its two additional codes. Keep all
-216 E codes and the active criteria in scope alongside the C checks.
+AA uses **23 cumulative C codes**, not only its two additional ones, alongside the
+selected-level E codes and active criteria.
 
-The revised table/header/form identifiers differ from the old skill. Do not remap
-codes based solely on a familiar number. Use the report edition and full message,
-and record unknown or edition-mismatched codes as unresolved.
+The revised table, header, and form identifiers differ from the old skill. Never remap
+a code by a familiar number: use the report's edition and full message, and record
+unknown or edition-mismatched codes as unresolved.
 
-Freego reports may use syntactic conditions stricter or narrower than general
-accessible-name checks. Keep semantic accessibility and scanner compatibility
-evidence separate, satisfy both where applicable, and avoid hacks that hide content
-or destroy its meaning.
+Freego's syntactic conditions can be stricter or narrower than general accessible-name
+checks. Satisfy both where they apply, keep their evidence separate, and never hide
+content or destroy meaning to pass a scanner.

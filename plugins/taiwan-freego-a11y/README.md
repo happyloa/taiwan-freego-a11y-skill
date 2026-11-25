@@ -1,6 +1,6 @@
 # taiwan-freego-a11y（plugin）
 
-Claude Code Plugin，內含 taiwan-freego-a11y 2.2.0 Skill：依台灣《網站無障礙規範 (115.11)》／WCAG 2.2 開發、修正與稽核網站，預設 AA。
+Claude Code Plugin，內含 taiwan-freego-a11y 2.3.0 Skill：依台灣《網站無障礙規範 (115.11)》／WCAG 2.2 開發、修正與稽核網站，預設 AA。
 
 ```text
 /plugin install taiwan-freego-a11y --marketplace happyloa/taiwan-freego-a11y-skill
@@ -15,4 +15,4 @@ Claude Code Plugin，內含 taiwan-freego-a11y 2.2.0 Skill：依台灣《網站�
 
 ## English
 
-Bundles the taiwan-freego-a11y 2.2.0 skill for Taiwan 115.11 / WCAG 2.2, AA by default: the full A/AA/AAA inventory, implementation guidance, and an evidence-based manual audit workflow. 115.11 certification starts on 2026-11-30. Inventory coverage does not mean every check runs automatically or that a site is certified.
+Bundles the taiwan-freego-a11y 2.3.0 skill for Taiwan 115.11 / WCAG 2.2, AA by default: the full A/AA/AAA inventory, implementation guidance, and an evidence-based manual audit workflow. 115.11 certification starts on 2026-11-30. Inventory coverage does not mean every check runs automatically or that a site is certified.
