@@ -88,6 +88,18 @@ class AuditChecklistTests(unittest.TestCase):
                                 capture_output=True, env=env, check=True)
         self.assertIn("非文字內容", result.stdout.decode("utf-8"))
 
+    def test_output_keeps_an_existing_file_unless_forced(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "a11y-audit.md"
+            target.write_text("recorded evidence", encoding="utf-8")
+            command = [sys.executable, str(SKILL / "scripts/audit_checklist.py"), "--output", str(target)]
+            refused = subprocess.run(command, capture_output=True, check=False)
+            self.assertEqual(1, refused.returncode)
+            self.assertIn(b"--force", refused.stderr)
+            self.assertEqual("recorded evidence", target.read_text(encoding="utf-8"))
+            self.assertEqual(0, audit.main(["--output", str(target), "--force"]))
+            self.assertIn("非文字內容", target.read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

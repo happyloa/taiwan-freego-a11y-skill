@@ -125,6 +125,7 @@ def main(argv=None):
     parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
     parser.add_argument("--report", type=Path, help="UTF-8 text/HTML report for code recognition only")
     parser.add_argument("--output", type=Path, help="Write UTF-8 output to this file instead of stdout")
+    parser.add_argument("--force", action="store_true", help="Let --output replace an existing file")
     parser.add_argument("--validate", action="store_true", help="Validate the bundled catalog and exit")
     args = parser.parse_args(argv)
     try:
@@ -137,13 +138,19 @@ def main(argv=None):
         text = (json.dumps(result, ensure_ascii=False, indent=2) + "\n" if args.format == "json"
                 else markdown(result))
         if args.output:
-            args.output.write_text(text, encoding="utf-8", newline="\n")
+            # An existing file may hold recorded evidence, so replacing it must be asked for.
+            with args.output.open("w" if args.force else "x", encoding="utf-8", newline="\n") as stream:
+                stream.write(text)
         else:
             # Keep redirected output UTF-8 when the console locale is not (e.g. cp950).
             if hasattr(sys.stdout, "reconfigure"):
                 sys.stdout.reconfigure(encoding="utf-8")
             sys.stdout.write(text)
         return 0
+    except FileExistsError:
+        print(f"Cannot generate checklist: {args.output} already exists. "
+              "Choose another name, or pass --force to replace it.", file=sys.stderr)
+        return 1
     except (ValueError, OSError, KeyError, TypeError, IndexError) as exc:
         print(f"Cannot generate checklist: {exc}", file=sys.stderr)
         return 1
