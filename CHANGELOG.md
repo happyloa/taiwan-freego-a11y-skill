@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.0 — 2026-11-26
+
+- `audit_checklist.py --output` no longer replaces an existing file; pass `--force` to replace it.
+- The checkout repair fixture now marks its single-line address field `shipping address-line1`. `street-address` is meant for multiline controls.
+- CI installs dependencies without lifecycle scripts and runs only the Claude Code CLI's install step.
+
 ## 2.3.0 — 2026-11-25
 
 - Read references by task instead of all five on every run, and tighten SKILL.md (1,849 to 1,673 words). Eval scores matched 2.2.0 within judge noise, and a run of the suite cost about 6% less.
