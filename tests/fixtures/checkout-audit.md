@@ -1,5 +1,7 @@
 # 結帳範例無障礙修正報告
 
+> 2026-11-26 補記：地址欄位的 `autocomplete` 已由 `shipping street-address` 改為 `shipping address-line1`，因為 `street-address` 是多行欄位用的值，不適用單行 `input`。以下仍是 2026-10-08 當時的紀錄，包含當時對舊值判定 Pass 的段落。
+
 本次已完成 `checkout.after.html` 的程式修正與本機互動驗證，保留結帳、配送選擇、商品排序、密碼與手機驗證碼用途。下列 **Pass 僅代表記載方法與頁面狀態的觀察結果**，不代表整站符合聲明、Freego 通過或政府認證。中文字形排版、螢幕閱讀器、真實認證流程與跨頁一致性仍有 Pending。
 
 ## 範圍、版本與資料

@@ -56,7 +56,7 @@ CI 在每次 main 更新與 PR 時執行這四項，Linux 上使用 @sparticuz/c
 
 ## 修正範例
 
-[原始結帳頁](../tests/fixtures/checkout.before.html)有缺少 legend、headers 參照錯誤、只能拖曳排序、目標過小、地址要重填、密碼與驗證碼禁止貼上等問題。[修正版](../tests/fixtures/checkout.after.html)由新對話中的獨立 Codex 代理產生（2026-10-08），代理只拿到已安裝的 Skill 與原始 HTML，[修正報告](../tests/fixtures/checkout-audit.md)也一併保留。
+[原始結帳頁](../tests/fixtures/checkout.before.html)有缺少 legend、headers 參照錯誤、只能拖曳排序、目標過小、地址要重填、密碼與驗證碼禁止貼上等問題。[修正版](../tests/fixtures/checkout.after.html)由新對話中的獨立 Codex 代理產生（2026-10-08），代理只拿到已安裝的 Skill 與原始 HTML，[修正報告](../tests/fixtures/checkout-audit.md)也一併保留。2026-11-26 手動把地址欄位的 `autocomplete` 改為 `shipping address-line1`（原本的 `street-address` 是多行欄位用的值）。上面的 Freego 結果是改動前的版本，改動後沒有重掃。
 
 [瀏覽器測試](../tests/browser/checkout.spec.js)先確認原始頁面的缺失仍在，再檢查修正版：
 

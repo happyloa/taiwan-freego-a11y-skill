@@ -65,7 +65,7 @@ test('pointer and keyboard alternatives reorder cards without losing focus', asy
 test('repeated address is available and authentication fields allow paste events', async ({ page }) => {
   await open(page, 'after');
   await expect(page.locator('#address')).toHaveValue('臺北市中正區示範路 1 號');
-  await expect(page.locator('#address')).toHaveAttribute('autocomplete', 'shipping street-address');
+  await expect(page.locator('#address')).toHaveAttribute('autocomplete', 'shipping address-line1');
   await page.getByLabel('沿用上一步帳單地址', { exact: true }).uncheck();
   await page.locator('#address').fill('新竹縣竹東鎮示範路 2 號');
   await page.getByLabel('沿用上一步帳單地址', { exact: true }).check();
